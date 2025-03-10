@@ -1,126 +1,209 @@
 "use client";
-import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import SearchCard from "@/components/SearchComponent";
-//static assets
-import laos from "../../public/laos.png";
-import { DicionaryModel } from "@/shared/model/DictionaryModel";
-import { getData } from "./lib/actions";
+import patuxai from "../../public/phanamxai.png";
+import laoWoment from "../../public/lao-women.jpg"
 
+import Image from "next/image";
+import Header from "@/components/header";
+import Drawer from "@/components/drawer";
+import Overlay from "@/components/overlay";
+import CharacterGrid from "@/components/CharGrid";
+import PopularWordsSection from "@/components/PopularWordSection";
+import MistakeCorrectCard from "@/components/MistakeCorrectCard";
+import MistakeCorrectionSection from "@/components/MistakeCorrectSection";
 export default function Home() {
+  const chars = [
+    {
+      character: "ກ",
+      image: "/chars/chicken.png",
+      word: 'ໄກ່'
+    },
+    {
+      character: "ຂ",
+      image: "/chars/eggs.jpg",
+      word: 'ໄຂ່'
+    },
+    {
+      character: "ຄ",
+      image: "/chars/buffalo.jpg",
+      word: 'ຄວາຍ'
+    },
+    {
+      character: "ງ",
+      image: "/chars/ox.jpg",
+      word: 'ງົວ'
+    },
+
+    {
+      character: "ຈ",
+      image: "/chars/cup.jpg",
+      word: 'ຈອກ'
+    }
+    ,
+
+    {
+      character: "ສ",
+      image: "/chars/tiger.jpg",
+      word: 'ເສືອ'
+    }
+    ,
+
+    {
+      character: "ຊ",
+      image: "/chars/elepant.png",
+      word: 'ຊ້າງ'
+    }
+    ,
+
+    {
+      character: "ຍ",
+      image: "/chars/mosquito.jpg",
+      word: 'ຍູງ'
+    }
+    ,
+
+    {
+      character: "ດ",
+      image: "/chars/kids.jpg",
+      word: 'ເດັກ'
+    },
+    {
+      character: "ຕ",
+      image: "/chars/eye.jpg",
+      word: 'ຕາ'
+    },
+    {
+      character: "ຖ",
+      image: "/chars/bag.jpg",
+      word: 'ຖົງ'
+    },
+    {
+      character: "ທ",
+      image: "/chars/lao-flag.jpg",
+      word: 'ທົງ'
+    },
+    {
+      character: "ນ",
+      image: "/chars/bird.jpg",
+      word: 'ນົກ'
+    },
+    {
+      character: "ບ",
+      image: "/chars/goaat.jpg",
+      word: 'ແບ້'
+    },
+    {
+      character: "ປ",
+      image: "/chars/fish.jpg",
+      word: 'ປາ'
+    },
+    {
+      character: "ຜ",
+      image: "/chars/bee.jpg",
+      word: 'ເຜິ້ງ'
+    },
+    {
+      character: "ຝ",
+      image: "/chars/rain.jpg",
+      word: 'ຝົນ'
+    },
+    {
+      character: "ຟ",
+      image: "/chars/fire.jpg",
+      word: 'ໄຟ'
+    },
+    {
+      character: "ຢ",
+      image: "/chars/medicine.jpg",
+      word: 'ຢາ'
+    },
+    {
+      character: "ຣ",
+      image: "/chars/radar.jpg",
+      word: 'ຣາດາ'
+    },
+    {
+      character: "ລ",
+      image: "/chars/monkey.jpg",
+      word: 'ລີງ'
+    },
+    {
+      character: "ວ",
+      image: "/chars/handfaan.jpg",
+      word: 'ວີ'
+    },
+    {
+      character: "ຫ",
+      image: "/chars/goose.jpg",
+      word: 'ຫ່ານ'
+    },
+    {
+      character: "ອ",
+      image: "/chars/goose.jpg",
+      word: 'ໂອ'
+    },
+    {
+      character: "ຮ",
+      image: "/chars/goose.jpg",
+      word: 'ເຮືອນ'
+    }
+  ]
   // State to manage drawer visibility
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [words, setWord]= useState<DicionaryModel[]>([])
   // Toggle drawer and overlay
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
-
-  // Close drawer and overlay
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
 
-  useEffect(()=>{
-    fetchWord()
-  }, []);
- 
-  const fetchWord = async () => {
-    const resData = await  getData();
-    console.log("resData: ", resData)
-    setWord(resData)
-  }
+
+
+
+
+
+
 
   return (
-    <div className="">
-      {/* Navbar */}
-      <nav className="bg-gray-800 p-4">
-        <div className="container mx-auto flex">
-          {/* Hamburger Button (Visible on Mobile) */}
-          <button id="drawer-toggle" className="text-white lg:hidden" onClick={toggleDrawer}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
-          <a href="#" className="text-white text-lg font-bold mx-6">
-            <Image src={laos} alt=""></Image>
-          </a>
+    <div className="relative">
+      <div
+        className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
+      ></div>
+      <Header isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+      <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} closeDrawer={closeDrawer} />
+      <Overlay isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
 
-          {/* Navbar Menu (Visible on Desktop) */}
-          <ul className="hidden lg:flex space-x-4">
-            <li>
-              <a href="#" className="text-white hover:text-gray-400">
-                ຄຳສັບ
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-white hover:text-gray-400">
-                ໄວຍະກອນ
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-white hover:text-gray-400">
-                ບົດຫັດແຕ່ງ
-              </a>
-            </li>
-          </ul>
+      <main className="relative">
+
+        <div >
+          <SearchCard ></SearchCard>
         </div>
-      </nav>
 
-      {/* Drawer (Hidden by Default) */}
-      <div id="drawer" className={`fixed inset-y-0 left-0 w-full bg-gray-800 text-white transform transition-transform duration-300 ease-in-out z-50 ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"} lg:transform-none lg:relative lg:w-auto lg:bg-transparent lg:translate-x-0`}>
-        <div className="flex mx-6">
-          <button className="text-white lg:hidden" onClick={toggleDrawer}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
-          <div className="mx-6 lg:hidden">
-            <a href="#" className="text-lg font-bold">
-              <Image src={laos} alt=""></Image>
-            </a>
+
+        <div className="mx-auto container flex flex-col-reverse lg:flex-row  justify-between  p-6">
+          <div className="md:mr-4">
+            <PopularWordsSection></PopularWordsSection>
+            <MistakeCorrectionSection />
+
+            <CharacterGrid chars={chars} />
           </div>
+
+
+          <div className="w-full h-full md:w-84 h-46  rounded-xl md:ml-2 mt-4">
+            <h4>Advertisement</h4>
+            <Image src={laoWoment} alt="lao women" className="mt-4"></Image>
+          </div>
+
+
+
         </div>
+      </main >
+      <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 h-16 row-start-3 flex gap-6 flex-wrap items-center justify-center ">
 
-        <ul className="mt-4 lg:hidden">
-          <li>
-            <a href="#" className="block p-4 hover:bg-gray-700" onClick={closeDrawer}>
-              ຄຳສັບ
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block p-4 hover:bg-gray-700" onClick={closeDrawer}>
-              ໄວຍະກອນ
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block p-4 hover:bg-gray-700" onClick={closeDrawer}>
-              ບົດຫັດແຕ່ງ
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Overlay (Hidden by Default) */}
-      <div id="overlay" className={`fixed inset-0  bg-opacity-50 z-40 ${isDrawerOpen ? "block" : "hidden"} lg:hidden`} onClick={closeDrawer}></div>
-      {/* grid-rows-[20px_1fr_20px] note i want to know what it mean? */}
-      <main className="justify-items-center h-screen ">
-        <SearchCard words={words}></SearchCard>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a className="flex items-center gap-2 hover:underline hover:underline-offset-4" href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app" target="_blank" rel="noopener noreferrer">
-          <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
-          Learn
-        </a>
-        <a className="flex items-center gap-2 hover:underline hover:underline-offset-4" href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app" target="_blank" rel="noopener noreferrer">
-          <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
-          Examples
-        </a>
-        <a className="flex items-center gap-2 hover:underline hover:underline-offset-4" href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app" target="_blank" rel="noopener noreferrer">
-          <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
-          Go to nextjs.org →
-        </a>
       </footer>
-    </div>
+    </div >
   );
 }
