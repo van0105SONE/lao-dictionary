@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import style from './search.module.css'
 import kingdergarden from '../../public/kindergarten.png'
 import reading from '../../public/reading.png'
-import studying from '../../public/studying.png'
+import Link from 'next/link'
+import { searchWord } from "@/app/lib/searchActions";
 
 export interface SearchCardProps {
   words: DicionaryModel[],
@@ -20,7 +21,7 @@ const SearchCard = () => {
   }, [keyword]);
 
   const fetchWord = async (searchParam: string) => {
-    const resData = await getData(searchParam);
+    const resData = await searchWord(searchParam);
     setWord(resData)
   }
 
@@ -106,11 +107,12 @@ const SearchCard = () => {
         <div className="flex flex-col mx-2 text-lg z-50">
           <ul className="border-y border-gray-100 divide-y divide-gray-100">
             {words.map((word) => (
-              <li key={word.lao_word} className="flex items-center py-3 hover:bg-gray-50 transition-colors duration-200">
-                <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li key={word.id} className="flex items-center py-3 hover:bg-gray-50 transition-colors duration-200">
+                <Link href={`/word/[id]`} as={`/word/${word.id}`}>                <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span className="text-gray-700">{word.lao_word}</span>
+                  <span className="text-gray-700">{word.lao_word}</span></Link>
+
               </li>
             ))}
           </ul>

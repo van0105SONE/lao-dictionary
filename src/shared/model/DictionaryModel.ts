@@ -1,4 +1,5 @@
 export interface DicionaryModel {
+  id:number;
   definitions: { language: string; definition: string }[];
   examples: { language: string; example: string }[];
   lao_word: string;

@@ -6,12 +6,8 @@ import patuxai from "../../public/phanamxai.png";
 import laoWoment from "../../public/lao-women.jpg"
 
 import Image from "next/image";
-import Header from "@/components/header";
-import Drawer from "@/components/drawer";
-import Overlay from "@/components/overlay";
 import CharacterGrid from "@/components/CharGrid";
 import PopularWordsSection from "@/components/PopularWordSection";
-import MistakeCorrectCard from "@/components/MistakeCorrectCard";
 import MistakeCorrectionSection from "@/components/MistakeCorrectSection";
 export default function Home() {
   const chars = [
@@ -150,15 +146,6 @@ export default function Home() {
       word: 'ເຮືອນ'
     }
   ]
-  // State to manage drawer visibility
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  // Toggle drawer and overlay
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
-  const closeDrawer = () => {
-    setIsDrawerOpen(false);
-  };
 
 
 
@@ -172,33 +159,21 @@ export default function Home() {
       <div
         className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
       ></div>
-      <Header isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-      <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} closeDrawer={closeDrawer} />
-      <Overlay isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
 
       <main className="relative">
-
         <div >
           <SearchCard ></SearchCard>
         </div>
-
-
         <div className="mx-auto container flex flex-col-reverse lg:flex-row  justify-between  p-6">
           <div className="md:mr-4">
-            <PopularWordsSection></PopularWordsSection>
+            <PopularWordsSection />
             <MistakeCorrectionSection />
-
             <CharacterGrid chars={chars} />
           </div>
-
-
           <div className="w-full h-full md:w-84 h-46  rounded-xl md:ml-2 mt-4">
             <h4>Advertisement</h4>
             <Image src={laoWoment} alt="lao women" className="mt-4"></Image>
           </div>
-
-
-
         </div>
       </main >
       <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 h-16 row-start-3 flex gap-6 flex-wrap items-center justify-center ">

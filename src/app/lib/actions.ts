@@ -28,25 +28,32 @@ WHERE
   
   console.log(data.length)
   if (data.length > 0) {
-    const transformedData: DicionaryModel = {
-      lao_word: data[0].lao_word,
-      pronunciation: data[0].pronunciation,
-      part_of_speech: data[0].part_of_speech,
-      definitions: data
-        .filter((row) => row.definition_language) // Filter out rows without definitions
-        .map((row) => ({
-          language: row.definition_language,
-          definition: row.definition,
-        })),
-      examples: data
-        .filter((row) => row.example_language) // Filter out rows without examples
-        .map((row) => ({
-          language: row.example_language,
-          example: row.example,
-        })),
-    };
+   const resData =   data.map((item)=>{
+      console.log('item: ', item)
+      const transformedData: DicionaryModel = {
+        id: item.id,
+        lao_word: item.lao_word,
+        pronunciation: item.pronunciation,
+        part_of_speech: item.part_of_speech,
+        definitions: data
+          .filter((row) => row.definition_language) // Filter out rows without definitions
+          .map((row) => ({
+            language: row.definition_language,
+            definition: row.definition,
+          })),
+        examples: data
+          .filter((row) => row.example_language) // Filter out rows without examples
+          .map((row) => ({
+            language: row.example_language,
+            example: row.example,
+          })),
+      };
 
-    return [transformedData]; // Return as an array of DictionaryEntry
+      return  transformedData;
+  
+    });
+     console.log(resData)
+    return resData; // Return as an array of DictionaryEntry
   }else{
     return []
   }
