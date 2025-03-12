@@ -12,15 +12,15 @@ export default async function Page({
   const { id } = await params;
   const word = await getWordById(Number(id))
   return (
-    <div className="container mx-auto pt-24">
-      <div className="flex bg-gray-200 min-h-screen ">
+    <div className="container mx-auto pt-24 min-h-screen">
+      <div className="flex flex-col lg:flex-row bg-gray-200  ">
         {/* Left Advertisement Space (20%) */}
-        <div className="w-1/5 bg-blue-200">
+        <div className="md:w-1/5 bg-blue-200 px-6">
           {/* Left Ad Content */}
         </div>
 
         {/* Main Content (60%) */}
-        <div className="w-3/5 bg-white">
+        <div className="md:w-3/5 bg-white p-6">
           {word && (
             <WordDetailCard
               id={word.id}
@@ -32,9 +32,10 @@ export default async function Page({
             />
           )}
         </div>
+        
 
         {/* Right Advertisement Space (20%) */}
-        <div className="w-1/5 bg-blue-200">
+        <div className="md:w-1/5 bg-blue-200">
           {/* Right Ad Content */}
         </div>
       </div>

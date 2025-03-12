@@ -26,8 +26,11 @@ export default function RootLayout({
       <body
         className={myFont.className}
       >
-                <Header></Header>
+        <Header></Header>
         {children}
+        <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 h-16 row-start-3 flex gap-6 flex-wrap items-center justify-center ">
+
+        </footer>
       </body>
     </html>
   );
