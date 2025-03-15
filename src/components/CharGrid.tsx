@@ -1,11 +1,17 @@
 import Image from "next/image";
 
-const CharacterGrid = ({ chars }: any) => {
+export interface CharacterGridProps {
+  chars: any,
+  title: string
+}
+
+
+const CharacterGrid = ({ chars, title }: CharacterGridProps) => {
   return (
     <div className="mt-16 border-2 border-gray-200 rounded-xl bg-white shadow-lg overflow-hidden">
       {/* Title */}
       <h1 className="text-4xl text-center font-bold text-[#205781] py-6 bg-gradient-to-r from-[#4F959D] to-[#205781] bg-clip-text text-transparent">
-        ຕົວອັກສອນພາສາລາວ
+        {title}
       </h1>
 
       {/* Character Grid */}
@@ -19,17 +25,19 @@ const CharacterGrid = ({ chars }: any) => {
             <h4 className="text-2xl font-bold text-[#205781] mb-2">
               {item.character}
             </h4>
-
             {/* Image */}
-            <div className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center mb-2">
-              <Image
-                width={60}
-                height={60}
-                src={item.image}
-                alt={item.word}
-                className="object-contain"
-              />
-            </div>
+            {
+              item.image && <div className="w-10 h-10 md:w-16 md:h-16 flex items-center justify-center mb-2">
+                <Image
+                  width={60}
+                  height={60}
+                  src={item.image}
+                  alt={item.word}
+                  className="object-contain"
+                />
+              </div>
+            }
+
 
             {/* Word */}
             <p className="text-lg text-center text-gray-700">{item.word}</p>

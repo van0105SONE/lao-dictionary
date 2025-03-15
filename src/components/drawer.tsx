@@ -1,15 +1,16 @@
 // components/Drawer.jsx
 import Image from "next/image";
 import laos from "../../public/laos.png"; // Adjust the path to your image
+import Link from "next/link";
 
 export interface DrawerProps {
     isDrawerOpen: boolean,
-    toggleDrawer: ()=>void,
-    closeDrawer: ()=>void
+    toggleDrawer: () => void,
+    closeDrawer: () => void
 }
 
 
-const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }:DrawerProps) => {
+const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
     return (
         <div
             id="drawer"
@@ -31,19 +32,15 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }:DrawerProps) => {
 
             <ul className="mt-4 lg:hidden">
                 <li>
-                    <a href="#" className="block p-4 hover:bg-gray-700" onClick={closeDrawer}>
-                        ຄຳສັບ
-                    </a>
+                    <Link href={`/`} className="block p-4 hover:text-gray-400">
+                        ວັດຈະນານຸກົມ
+                    </Link>
+
                 </li>
                 <li>
-                    <a href="#" className="block p-4 hover:bg-gray-700" onClick={closeDrawer}>
+                    <Link href={`/grammar`} className="block p-4 hover:text-gray-400">
                         ໄວຍະກອນ
-                    </a>
-                </li>
-                <li>
-                    <a href="#" className="block p-4 hover:bg-gray-700" onClick={closeDrawer}>
-                        ບົດຫັດແຕ່ງ
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </div>

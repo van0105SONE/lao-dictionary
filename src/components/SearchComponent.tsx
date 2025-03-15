@@ -108,7 +108,7 @@ const SearchCard = () => {
           <ul className="border-y border-gray-100 divide-y divide-gray-100">
             {words.map((word) => (
               <li key={word.id} className="flex items-center py-3 hover:bg-gray-50 transition-colors duration-200">
-                <Link href={`/word/[id]`} as={`/word/${word.id}`}>                <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <Link href={`/[id]`} as={`/${word.id}`}>                <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
                   <span className="text-gray-700">{word.lao_word}</span></Link>

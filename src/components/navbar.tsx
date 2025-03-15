@@ -1,13 +1,14 @@
 import Image from "next/image";
 import laos from "../../public/laos.png"; // Adjust the path to your image
+import Link from 'next/link'
 
 export interface HeaderProps {
     isDrawerOpen: boolean,
-    toggleDrawer: ()=>void
+    toggleDrawer: () => void
 }
 
 
-export default function Navbar({isDrawerOpen, toggleDrawer}:HeaderProps) {
+export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
     return (
         <nav className={`fixed min-w-screen bg-[#205781] p-4 z-50`}>
             <div className="container mx-auto flex">
@@ -24,19 +25,14 @@ export default function Navbar({isDrawerOpen, toggleDrawer}:HeaderProps) {
                 {/* Navbar Menu (Visible on Desktop) */}
                 <ul className="hidden lg:flex space-x-4">
                     <li>
-                        <a href="#" className="text-white hover:text-gray-400">
-                            ຄຳສັບ
-                        </a>
+                        <Link href={`/`} className="text-white hover:text-gray-400">
+                            ວັດຈະນານຸກົມ
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" className="text-white hover:text-gray-400">
-                            ໄວຍະກອນ
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="text-white hover:text-gray-400">
-                            ບົດຫັດແຕ່ງ
-                        </a>
+                        <Link href={`/grammar`} className="text-white hover:text-gray-400">
+                              ໄວຍະກອນ
+                        </Link>
                     </li>
                 </ul>
             </div>
