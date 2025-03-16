@@ -8,6 +8,13 @@
       "when": 1741625974695,
       "tag": "0000_magenta_thanos",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1742137835272,
+      "tag": "0001_mature_mauler",
+      "breakpoints": true
     }
   ]
 }

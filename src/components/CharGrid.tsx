@@ -2,15 +2,17 @@ import Image from "next/image";
 
 export interface CharacterGridProps {
   chars: any,
-  title: string
+  title: string,
+  text_color:string,
+  background_color: string
 }
 
 
-const CharacterGrid = ({ chars, title }: CharacterGridProps) => {
+const CharacterGrid = ({ chars, title,text_color ,background_color }: CharacterGridProps) => {
   return (
-    <div className="mt-16 border-2 border-gray-200 rounded-xl bg-white shadow-lg overflow-hidden">
+    <div className={`mt-16 border-2 border-gray-200 rounded-xl ${background_color} shadow-lg overflow-hidden`}>
       {/* Title */}
-      <h1 className="text-4xl text-center font-bold text-[#205781] py-6 bg-gradient-to-r from-[#4F959D] to-[#205781] bg-clip-text text-transparent">
+      <h1 className={`text-4xl text-center font-bold text-[#205781] py-6 ${text_color} bg-clip-text text-transparent`}>
         {title}
       </h1>
 

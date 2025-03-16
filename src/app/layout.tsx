@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const myFont = localFont({
   src: "../../public/NotoSansLao_Condensed-Black.ttf"
@@ -26,11 +30,15 @@ export default function RootLayout({
       <body
         className={myFont.className}
       >
-        <Header></Header>
-        {children}
-        <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 h-16 row-start-3 flex gap-6 flex-wrap items-center justify-center ">
+        <Suspense fallback={<Loading />}>
+          <StackProvider app={stackServerApp}><StackTheme>
+            <Header></Header>
+            {children}
+            <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 h-16 row-start-3 flex gap-6 flex-wrap items-center justify-center ">
 
-        </footer>
+            </footer>
+          </StackTheme></StackProvider>
+        </Suspense>
       </body>
     </html>
   );

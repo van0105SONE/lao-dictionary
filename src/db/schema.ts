@@ -6,7 +6,8 @@ export const dictionary = pgTable("lao_dictionary", {
     word: text("word").notNull(),
     pronunciation: text("pronunciation").notNull(),
     part_of_speech: text("part_of_speech"),
-    created_at: timestamp().defaultNow().notNull(),
+    search_countL:  integer("search_count"),
+    created_at: timestamp().defaultNow().notNull()
 });
 
 
@@ -21,6 +22,15 @@ export const examples = pgTable("examples", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
     example: text("example").notNull(),
     language: text("language").notNull(),
+    word_id: integer("word_id").references(() => dictionary.id),
+});
+
+
+export const correct_and_incorrect = pgTable("correct_and_incorrect", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    correct_word: text("correct_word").notNull(),
+    incorrect_word: text("incorrect_word").notNull(),
+    explaination: text("explaination"),
     word_id: integer("word_id").references(() => dictionary.id),
 });
 

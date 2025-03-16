@@ -1,6 +1,7 @@
 import Image from "next/image";
 import laos from "../../public/laos.png"; // Adjust the path to your image
 import Link from 'next/link'
+import { useUser } from "@stackframe/stack"
 
 export interface HeaderProps {
     isDrawerOpen: boolean,
@@ -9,9 +10,11 @@ export interface HeaderProps {
 
 
 export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
+
+    const currentUser = useUser();
     return (
-        <nav className={`fixed min-w-screen bg-[#205781] p-4 z-50`}>
-            <div className="container mx-auto flex">
+        <nav className={`fixed min-w-screen  bg-[#205781] p-4  z-50`}>
+            <div className="container mx-auto  flex">
                 {/* Hamburger Button (Visible on Mobile) */}
                 <button id="drawer-toggle" className="text-white lg:hidden" onClick={toggleDrawer}>
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,7 +26,7 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
                 </a>
 
                 {/* Navbar Menu (Visible on Desktop) */}
-                <ul className="hidden lg:flex space-x-4">
+                <ul className="hidden lg:flex space-x-4 text-xl">
                     <li>
                         <Link href={`/`} className="text-white hover:text-gray-400">
                             ວັດຈະນານຸກົມ
@@ -31,10 +34,16 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
                     </li>
                     <li>
                         <Link href={`/grammar`} className="text-white hover:text-gray-400">
-                              ໄວຍະກອນ
+                            ໄວຍະກອນ
                         </Link>
                     </li>
                 </ul>
+
+
+                <Link href={currentUser ? `/admin` : `/handler/signup`} className="text-white hover:text-gray-400">
+                    ເຂົ້າຊູລະບົບ
+                </Link>
+
             </div>
         </nav>
 
