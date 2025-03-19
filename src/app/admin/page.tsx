@@ -59,20 +59,6 @@ export default async function Page() {
                                     <td className="px-4 py-2">2023-10-01</td>
                                     <td className="px-4 py-2">User123</td>
                                 </tr>
-                                <tr className="">
-                                    <td className="px-4 py-2">2</td>
-                                    <td className="px-4 py-2">Sample</td>
-                                    <td className="px-4 py-2">Verb</td>
-                                    <td className="px-4 py-2">2023-10-02</td>
-                                    <td className="px-4 py-2">User456</td>
-                                </tr>
-                                <tr className="">
-                                    <td className="px-4 py-2">3</td>
-                                    <td className="px-4 py-2">Test</td>
-                                    <td className="px-4 py-2">Adjective</td>
-                                    <td className="px-4 py-2">2023-10-03</td>
-                                    <td className="px-4 py-2">User789</td>
-                                </tr>
                             </tbody>
                         </table>
 

@@ -17,7 +17,7 @@ const CharacterGrid = ({ chars, title,text_color ,background_color }: CharacterG
       </h1>
 
       {/* Character Grid */}
-      <div className="grid grid-cols-5 gap-2  md:grid-cols-11 p-6">
+      <div className="grid grid-cols-5 gap-2  md:grid-cols-8 p-6">
         {chars.map((item: any) => (
           <div
             key={item.character}

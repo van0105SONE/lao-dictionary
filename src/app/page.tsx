@@ -13,6 +13,7 @@ import { LAO_ALPHABET } from "@/shared/constant/global-contant";
 import { useUser } from "@stackframe/stack";
 
 export default function Home() {
+  
   const currentUser = useUser();
   return (
     <div className="relative">

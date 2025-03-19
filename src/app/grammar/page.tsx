@@ -1,7 +1,7 @@
 "use client";
 
 import CharacterGrid from "@/components/CharGrid";
-import Image from "next/image";
+
 import SearchCard from "@/components/SearchComponent";
 import { LAO_ALPHABET, COMBINE_ALPHABET, SARA } from "@/shared/constant/global-contant";
 import Link from "next/link";
