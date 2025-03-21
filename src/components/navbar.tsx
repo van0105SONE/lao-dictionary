@@ -1,7 +1,6 @@
 import Image from "next/image";
 import laos from "../../public/laos.png"; // Adjust the path to your image
 import Link from 'next/link'
-import { useUser } from "@stackframe/stack"
 
 export interface HeaderProps {
     isDrawerOpen: boolean,
@@ -11,7 +10,6 @@ export interface HeaderProps {
 
 export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
 
-    const currentUser = useUser();
     return (
         <nav className={`fixed min-w-screen  bg-[#205781] p-4  z-50`}>
             <div className="container mx-auto  flex justify-between">
@@ -30,7 +28,7 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
                     </a>
 
                     {/* Navbar Menu (Visible on Desktop) */}
-                    <ul className="hidden lg:flex space-x-4 text-xl">
+                    <ul className="hidden lg:flex space-x-4 text-lg">
                         <li>
                             <Link href={`/`} className="text-white hover:text-gray-400">
                                 ວັດຈະນານຸກົມ
@@ -46,7 +44,7 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
 
 
 
-                <Link href={currentUser ? `/admin` : `/handler/signup`} className="text-xl text-white hover:text-gray-400 justify-item-end">
+                <Link href={ `/admin`} className="text-lg text-white hover:text-gray-400 justify-item-end">
                     ເຂົ້າຊູລະບົບ / ລ໋ອກອິນ
                 </Link>
 

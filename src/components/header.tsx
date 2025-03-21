@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Drawer from "./drawer";
 import Navbar from "./navbar";
 import Overlay from "./overlay";
 
 export default function Header() {
-      // State to manage drawer visibility
+  // State to manage drawer visibility
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   // Toggle drawer and overlay
   const toggleDrawer = () => {
@@ -16,12 +16,13 @@ export default function Header() {
     setIsDrawerOpen(false);
   };
 
-  
-    return (
-        <div>
-            <Navbar isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-            <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} closeDrawer={closeDrawer} />
-            <Overlay isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
-        </div>
-    )
+
+  return (
+    <div>
+        <Navbar isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+        <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} closeDrawer={closeDrawer} />
+        <Overlay isDrawerOpen={isDrawerOpen} closeDrawer={closeDrawer} />
+
+    </div>
+  )
 }

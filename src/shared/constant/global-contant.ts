@@ -171,7 +171,7 @@ export const COMBINE_ALPHABET = [
     }
 ]
 
-export const SARA =  [
+export const SARA = [
     {
         character: "xະ",
         image: "",
@@ -315,4 +315,10 @@ export const SARA =  [
         image: "",
         word: ''
     },
+]
+ 
+export const LANGUAGE_SUPPORT = [
+    { code: "lao", name: "Lao" },
+    { code: "en", name: "English" },
+    { code: "th", name: "Thai" },
 ]

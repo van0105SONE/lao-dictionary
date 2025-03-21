@@ -26,8 +26,8 @@ export const searchWord = async (keyword: string) => {
 export const getWordById = async (id: number) => {
   const data = await db.select().from(dictionary).where(eq(dictionary.id, id));
   if (data) {
-    const resDefinitions = await db.select().from(definitions).where(eq(definitions.id, data[0].id));
-    const resExamples = await db.select().from(examples).where(eq(examples.id, data[0].id))
+    const resDefinitions = await db.select().from(definitions).where(eq(definitions.word_id, data[0].id));
+    const resExamples = await db.select().from(examples).where(eq(examples.word_id, data[0].id))
     const mapData: DicionaryModel = {
       id: data[0].id,
       lao_word: data[0].word,
@@ -40,9 +40,10 @@ export const getWordById = async (id: number) => {
         return { language: item.language, example: item.example }
       }),
     }
+    
     return mapData;
   }
-  return null;
+  return data;
 }
 
 

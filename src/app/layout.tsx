@@ -23,22 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
 
-      </head>
 
       <body
         className={myFont.className}
       >
-        <Suspense fallback={<Loading />}>
-          <StackProvider app={stackServerApp}><StackTheme>
-            <Header></Header>
-            {children}
-            <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 h-16 row-start-3 flex gap-6 flex-wrap items-center justify-center ">
-
-            </footer>
-          </StackTheme></StackProvider>
-        </Suspense>
+        {children}
       </body>
     </html>
   );

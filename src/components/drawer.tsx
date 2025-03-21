@@ -30,9 +30,9 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
                 </div>
             </div>
 
-            <ul className="mt-4 text-xl lg:hidden">
+            <ul className="mt-4 text-lg lg:hidden">
                 <li>
-                    <Link href={`/`} className="block p-4 hover:text-gray-400">
+                    <Link href={`/`} className="block p-4 hover:text-gray-400 ">
                         ວັດຈະນານຸກົມ
                     </Link>
 
