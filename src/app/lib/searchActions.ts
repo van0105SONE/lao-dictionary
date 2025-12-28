@@ -20,7 +20,6 @@ export const searchWord = async (keyword: string) => {
     const mapData: DicionaryModel = {
       id: item.id,
       word: item.word,
-      meaning: item.meaning,
       pronuncation: item.pronuncation,
       part_of_speech: item.part_of_speech ?? "",
       definitions: [],
@@ -65,7 +64,6 @@ export const getWordById = async (id: number) => {
     const mapData: DicionaryModel = {
       id: data[0].id,
       word: data[0].word,
-      meaning: data[0].meaning,
       pronuncation: data[0].pronuncation,
       part_of_speech: data[0].part_of_speech ?? "",
       definitions: definitionDetails[0],

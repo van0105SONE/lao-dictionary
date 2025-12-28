@@ -1,12 +1,12 @@
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
 
-const PopularWordCard = ({ word, meaning, examples }: DicionaryModel) => {
+const PopularWordCard = ({ word, examples, definitions }: DicionaryModel) => {
   return (
     <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out p-6">
       {/* Word and Translation */}
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-[#205781]">{word}</h2>
-        <p className="text-lg text-gray-600">{meaning}</p>
+        <p className="text-lg text-gray-600">{definitions.filter((item)=> item.language == "la")[0].text}</p>
       </div>
 
       {/* Example Sentence */}

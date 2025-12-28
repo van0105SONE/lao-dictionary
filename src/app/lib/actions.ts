@@ -15,7 +15,6 @@ export const getRecentWords = async () => {
     const mapData: DicionaryModel = {
       id: item.id,
       word: item.word,
-      meaning: item.meaning,
       pronuncation: item.pronuncation,
       part_of_speech: item.part_of_speech ?? "",
       definitions: [],
