@@ -1,49 +1,78 @@
 "use server";
-import { eq, not } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
+import { eq } from "drizzle-orm";
 import { db } from "@/db/drizzle";
-import {  definitions, dictionary, examples } from "@/db/schema";
+import {
+  definitions,
+  definitionTexts,
+  dictionary,
+  examples,
+  exampleSentences,
+} from "@/db/schema";
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
 
-
 export const searchWord = async (keyword: string) => {
-  const data = await db.select().from(dictionary).where(eq(dictionary.word, keyword));
+  const data = await db
+    .select()
+    .from(dictionary)
+    .where(eq(dictionary.word, keyword));
+  console.log("keyword: ", data);
   const responseWord = data.map((item) => {
-
     const mapData: DicionaryModel = {
       id: item.id,
-      lao_word: item.word,
-      pronunciation: item.pronunciation,
+      word: item.word,
+      meaning: item.meaning,
+      pronuncation: item.pronuncation,
       part_of_speech: item.part_of_speech ?? "",
       definitions: [],
-      examples: []
-    }
+      examples: [],
+    };
     return mapData;
-  })
+  });
   return responseWord;
 };
 
 export const getWordById = async (id: number) => {
   const data = await db.select().from(dictionary).where(eq(dictionary.id, id));
   if (data) {
-    const resDefinitions = await db.select().from(definitions).where(eq(definitions.word_id, data[0].id));
-    const resExamples = await db.select().from(examples).where(eq(examples.word_id, data[0].id))
+    const defs = await db
+      .select()
+      .from(definitions)
+      .where(eq(definitions.wordId, id));
+
+    const definitionDetails = await Promise.all(
+      defs.map(async (d) => {
+        const texts = await db
+          .select()
+          .from(definitionTexts)
+          .where(eq(definitionTexts.definitionId, d.id));
+        return texts;
+      })
+    );
+
+    // fetch examples + example sentences
+    const exs = await db.select().from(examples).where(eq(examples.wordId, id));
+
+    const exampleDetails = await Promise.all(
+      exs.map(async (e) => {
+        const sentences = await db
+          .select()
+          .from(exampleSentences)
+          .where(eq(exampleSentences.exampleId, e.id));
+        return sentences;
+      })
+    );
+
     const mapData: DicionaryModel = {
       id: data[0].id,
-      lao_word: data[0].word,
-      pronunciation: data[0].pronunciation,
+      word: data[0].word,
+      meaning: data[0].meaning,
+      pronuncation: data[0].pronuncation,
       part_of_speech: data[0].part_of_speech ?? "",
-      definitions: resDefinitions.map((item) => {
-        return { language: item.language, definition: item.definition }
-      }),
-      examples: resExamples.map((item) => {
-        return { language: item.language, example: item.example }
-      }),
-    }
-    
+      definitions: definitionDetails[0],
+      examples: exampleDetails[0],
+    };
+
     return mapData;
   }
   return data;
-}
-
-
+};

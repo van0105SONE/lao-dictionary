@@ -1,84 +1,269 @@
 "use client";
 
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
+import { useState } from "react";
+import {
+  FiCopy,
+  FiVolume2,
+  FiBookmark,
+  FiFacebook,
+  FiTwitter,
+  FiLink,
+  FiCheck,
+} from "react-icons/fi";
 
+const WordDetailCard = ({
+  word,
+  pronuncation,
+  part_of_speech,
+  definitions,
+  examples,
+}: DicionaryModel) => {
+  const [copied, setCopied] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
 
-const WordDetailCard = ({ lao_word, pronunciation, part_of_speech, definitions, examples }: DicionaryModel) => {
-    console.log("lao word: ", lao_word)
-    return (
-        <div className="bg-white rounded-xl shadow-sm transition-shadow duration-300 ease-in-out p-6 space-y-6">
-            {/* Word Section Card */}
-            <div className="border border-gray-100 rounded-lg p-4">
-                <div className="flex justify-between items-start">
-                    {/* Word, Pronunciation, and Part of Speech */}
-                    <div className="space-y-2">
-                        <h2 className="text-2xl font-bold text-[#205781]">{lao_word}</h2>
-                        <div className="space-y-1">
-                            <h5 className="text-sm font-medium text-gray-600">{pronunciation}</h5>
-                            <h5 className="text-sm font-medium text-gray-600">{part_of_speech}</h5>
-                        </div>
-                    </div>
+  const speakWord = () => {
+    if ("speechSynthesis" in window) {
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = "lo-LA"; // Lao language code
+      speechSynthesis.speak(utterance);
+    }
+  };
 
-                    {/* Social Media Buttons */}
-                    <div className="flex items-center space-x-4">
-                        <a
-                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-500 hover:text-[#1877F2] transition-colors duration-300"
-                            aria-label="Share on Facebook"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                            </svg>
-                        </a>
-                        <a
-                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(`Check this out: ${lao_word}`)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-500 hover:text-[#1DA1F2] transition-colors duration-300"
-                            aria-label="Share on X (Twitter)"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22 5.924a8.008 8.008 0 0 1-2.356.646 4.11 4.11 0 0 0 1.804-2.27 8.169 8.169 0 0 1-2.606.996 4.103 4.103 0 0 0-7.097 2.808 4.16 4.16 0 0 0 .104.938 11.65 11.65 0 0 1-8.457-4.287 4.103 4.103 0 0 0 1.27 5.478 4.05 4.05 0 0 1-1.858-.514v.052a4.103 4.103 0 0 0 3.292 4.023 4.1 4.1 0 0 1-1.853.07 4.103 4.103 0 0 0 3.833 2.85 8.23 8.23 0 0 1-5.096 1.756 11.62 11.62 0 0 1-1.396-.082 11.59 11.59 0 0 0 6.29 1.843c7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.531A8.35 8.35 0 0 0 22 5.924z" />
-                            </svg>
-                        </a>
-                        <a
-                            href={`https://www.instagram.com/?url=${encodeURIComponent(window.location.href)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-500 hover:text-[#E4405F] transition-colors duration-300"
-                            aria-label="Share on Instagram"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(word);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+      {/* Header Section */}
+      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-t-2xl p-6 border border-gray-200">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div className="flex-1">
+            <div className="flex items-center gap-3 mb-2">
+              <h1 className="text-4xl font-bold text-gray-900 font-lao">
+                {word}
+              </h1>
+              <button
+                onClick={speakWord}
+                className="p-2 rounded-full bg-white hover:bg-gray-100 transition-colors shadow-sm"
+                aria-label="Pronounce word"
+              >
+                <FiVolume2 className="w-5 h-5 text-blue-600" />
+              </button>
             </div>
 
-            {/* Definition Section Card */}
-            <div className="border border-gray-100 rounded-lg p-4">
-                <h3 className="text-xl font-semibold text-gray-700">ຄວາມໝາຍ</h3>
-                <ul className="space-y-2 mt-2">
-                    {definitions.map((item, index) => (
-                        <li key={index} className="text-gray-600">{item.definition}</li>
-                    ))}
-                </ul>
+            <div className="flex flex-wrap items-center gap-4 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-gray-600">
+                  ອອກສຽງ:
+                </span>
+                <span className="text-lg text-blue-700 font-medium">
+                  {pronuncation}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+                  {part_of_speech}
+                </span>
+              </div>
             </div>
 
-            {/* Example Section Card */}
-            <div className="border border-gray-100 rounded-lg p-4">
-                <h3 className="text-xl font-semibold text-gray-700">ຕົວຢ່າງປະໂຫຍກ</h3>
-                <ul className="space-y-2 mt-2">
-                    {examples.map((item, index) => (
-                        <li key={index} className="text-gray-600">{item.example}</li>
-                    ))}
-                </ul>
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-2 mt-4">
+              <button
+                onClick={copyToClipboard}
+                className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 rounded-lg border border-gray-300 transition-all duration-200"
+              >
+                {copied ? (
+                  <FiCheck className="w-4 h-4 text-green-600" />
+                ) : (
+                  <FiCopy className="w-4 h-4" />
+                )}
+                <span>{copied ? "ຄັດລອກແລ້ວ" : "ຄັດລອກ"}</span>
+              </button>
+
+              <button
+                onClick={() => setBookmarked(!bookmarked)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                  bookmarked
+                    ? "bg-yellow-50 text-yellow-700 border border-yellow-300"
+                    : "bg-white hover:bg-gray-50 text-gray-700 border border-gray-300"
+                }`}
+              >
+                <FiBookmark
+                  className={`w-4 h-4 ${bookmarked ? "fill-yellow-500" : ""}`}
+                />
+                <span>{bookmarked ? "ບັນທຶກແລ້ວ" : "ບັນທຶກ"}</span>
+              </button>
             </div>
+          </div>
+
+          {/* Share Buttons */}
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600">ແບ່ງປັນ:</span>
+              <div className="flex gap-2">
+                <a
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                    ""
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors"
+                  aria-label="Share on Facebook"
+                >
+                  <FiFacebook className="w-5 h-5" />
+                </a>
+                <a
+                  href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                    ""
+                  )}&text=${encodeURIComponent(`${word} - ${pronuncation}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-600 transition-colors"
+                  aria-label="Share on Twitter"
+                >
+                  <FiTwitter className="w-5 h-5" />
+                </a>
+                <button
+                  onClick={copyToClipboard}
+                  className="p-2 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-600 transition-colors"
+                  aria-label="Copy link"
+                >
+                  <FiLink className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+
+      {/* Content Section */}
+      <div className="bg-white rounded-b-2xl border border-gray-200 border-t-0 p-6 space-y-8">
+        {/* Definitions */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-6 bg-blue-600 rounded-full"></div>
+            <h2 className="text-2xl font-bold text-gray-900">ຄວາມໝາຍ</h2>
+          </div>
+
+          <div className="space-y-4 pl-3">
+            {definitions.map((item, index) => (
+              <div key={index} className="group">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-6 h-6 mt-1 flex items-center justify-center bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                    {index + 1}
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-gray-700 text-lg leading-relaxed">
+                      {item.text}
+                    </p>
+
+                    <p className="mt-2 text-gray-500 text-sm italic pl-4 border-l-2 border-gray-200">
+                      language: {item.language}
+                    </p>
+                  </div>
+                </div>
+                {index < definitions.length - 1 && (
+                  <div className="h-px bg-gray-100 my-4 ml-9"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Examples */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-6 bg-emerald-600 rounded-full"></div>
+            <h2 className="text-2xl font-bold text-gray-900">
+              ຕົວຢ່າງການນຳໃຊ້
+            </h2>
+          </div>
+
+          <div className="space-y-4 pl-3">
+            {examples.map((item, index) => (
+              <div
+                key={index}
+                className="group bg-gradient-to-r from-emerald-50 to-white p-4 rounded-xl border border-emerald-100 hover:border-emerald-200 transition-all duration-300"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-emerald-100 text-emerald-700 rounded-lg">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-gray-800 text-lg leading-relaxed font-lao">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Related Information (Optional) */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-6 bg-purple-600 rounded-full"></div>
+            <h2 className="text-2xl font-bold text-gray-900">
+              ຂໍ້ມູນເພີ່ມເຕີມ
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-3">
+            <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+              <h3 className="font-semibold text-purple-800 mb-2">ປະເພດຄຳ</h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">
+                  {part_of_speech}
+                </span>
+                {/* Add more word types if available */}
+              </div>
+            </div>
+
+            <div className="bg-amber-50 p-4 rounded-lg border border-amber-100">
+              <h3 className="font-semibold text-amber-800 mb-2">
+                ລະດັບຄວາມພົບເຫັນ
+              </h3>
+              <div className="flex items-center gap-2">
+                <div className="flex-1 bg-amber-200 rounded-full h-2">
+                  <div className="w-3/4 bg-amber-600 rounded-full h-2"></div>
+                </div>
+                <span className="text-sm font-medium text-amber-700">
+                  ພົບເຫັນບໍ່ຖີ່
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer Notes */}
+        <div className="mt-8 pt-6 border-t border-gray-200">
+          <p className="text-sm text-gray-500 text-center">
+            ຂໍ້ມູນຈາກ ວັດຈະນານຸກົມລາວ • ອັບເດດລ່າສຸດ:{" "}
+            {new Date().toLocaleDateString("lo-LA")}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default WordDetailCard;

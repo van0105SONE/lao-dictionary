@@ -1,61 +1,44 @@
 // app/actions.ts
 "use server";
+import { db } from "@/db/drizzle";
+import { correct_and_incorrect, dictionary } from "@/db/schema";
+import { CorrectIncorrect } from "@/shared/model/CorrectIncorrect";
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
-import { neon } from "@neondatabase/serverless";
 
-export async function getData(keyword: string): Promise<DicionaryModel[]> {
-  const sql = neon(process.env.DATABASE_URL || "");
+export const getRecentWords = async () => {
+  const data = await db
+    .select()
+    .from(dictionary)
+    .limit(5)
+    .orderBy(dictionary.created_at);
+  const responseWord = data.map((item) => {
+    const mapData: DicionaryModel = {
+      id: item.id,
+      word: item.word,
+      meaning: item.meaning,
+      pronuncation: item.pronuncation,
+      part_of_speech: item.part_of_speech ?? "",
+      definitions: [],
+      examples: [],
+    };
+    return mapData;
+  });
+  return responseWord;
+};
 
-  console.log('keyword: ', keyword)
-  const data = await sql`SELECT 
-    ld.lao_word, 
-    ld.pronunciation, 
-    ld.part_of_speech, 
-    d.language AS definition_language, 
-    d.definition, 
-    eu.language AS example_language, 
-    eu.example
-FROM 
-    lao_dictionary ld
-LEFT JOIN 
-    definition d ON ld.id = d.lao_word_id
-LEFT JOIN 
-    example_usage eu ON ld.id = eu.lao_word_id
-WHERE 
-    ld.lao_word = ${keyword}
-    AND (d.language = 'la' OR d.language IS NULL)
-    AND (eu.language = 'la' OR eu.language IS NULL); `;
-  
-  console.log(data.length)
-  if (data.length > 0) {
-   const resData =   data.map((item)=>{
-      console.log('item: ', item)
-      const transformedData: DicionaryModel = {
-        id: item.id,
-        lao_word: item.lao_word,
-        pronunciation: item.pronunciation,
-        part_of_speech: item.part_of_speech,
-        definitions: data
-          .filter((row) => row.definition_language) // Filter out rows without definitions
-          .map((row) => ({
-            language: row.definition_language,
-            definition: row.definition,
-          })),
-        examples: data
-          .filter((row) => row.example_language) // Filter out rows without examples
-          .map((row) => ({
-            language: row.example_language,
-            example: row.example,
-          })),
-      };
-
-      return  transformedData;
-  
-    });
-     console.log(resData)
-    return resData; // Return as an array of DictionaryEntry
-  }else{
-    return []
-  }
-
-}
+export const getRecentCorrectIncorrect = async () => {
+  const data = await db
+    .select()
+    .from(correct_and_incorrect)
+    .limit(5)
+  const responseWord = data.map((item) => {
+    const mapData: CorrectIncorrect = {
+      id: item.id,
+      correct_word: item.correct_word,
+      incorrect_word: item.incorrect_word,
+      explanation: item.explanation ?? ''
+    }
+    return mapData;
+  });
+  return responseWord;
+};

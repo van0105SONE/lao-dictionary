@@ -1,6 +1,5 @@
 "use client";
 
-import { getData } from "@/app/lib/actions";
 import Image from "next/image";
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
 import { useEffect, useState } from "react";
@@ -113,8 +112,7 @@ const SearchCard = () => {
                 <Link href={`/[id]`} as={`/${word.id}`}>                <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                  <span className="text-gray-700">{word.lao_word}</span></Link>
-
+                  <span className="text-gray-700">{word.word}</span></Link>
               </li>
             ))}
           </ul>
