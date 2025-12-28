@@ -1,5 +1,5 @@
 "use server";
-import { eq } from "drizzle-orm";
+import { eq, like } from "drizzle-orm";
 import { db } from "@/db/drizzle";
 import {
   definitions,
@@ -14,8 +14,8 @@ export const searchWord = async (keyword: string) => {
   const data = await db
     .select()
     .from(dictionary)
-    .where(eq(dictionary.word, keyword));
-  console.log("keyword: ", data);
+    .where(like(dictionary.word, `${keyword}%`));
+
   const responseWord = data.map((item) => {
     const mapData: DicionaryModel = {
       id: item.id,

@@ -10,7 +10,6 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const [word, setWord] = useState<DicionaryModel>({
     id: 0,
     word: "",
-    meaning: '',
     pronuncation: "",
     part_of_speech: "",
     definitions: [],
@@ -39,9 +38,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Left Ad */}
           <aside className="hidden lg:block lg:col-span-2">
-            <div className="sticky top-28 h-[600px] rounded-lg bg-blue-100">
-              <p className="text-center pt-44"> Advertisement Board</p>
-            </div>
+            <div className="sticky top-28 h-[600px] rounded-lg "></div>
           </aside>
 
           {/* Main Content */}
@@ -50,7 +47,6 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
               <article className="bg-white rounded-xl shadow-sm p-6 md:p-8">
                 <WordDetailCard
                   id={word.id}
-                  meaning={word.meaning}
                   pronuncation={word.pronuncation}
                   part_of_speech={word.part_of_speech}
                   word={word.word}
@@ -63,9 +59,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
 
           {/* Right Ad */}
           <aside className="hidden lg:block lg:col-span-2">
-            <div className="sticky top-28 h-[600px] rounded-lg bg-blue-100">
-              <p className="text-center pt-44">Advertisement Board</p>
-            </div>
+            <div className="sticky top-28 h-[600px] rounded-lg "></div>
           </aside>
         </div>
       </main>

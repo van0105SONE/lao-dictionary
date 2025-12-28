@@ -218,42 +218,6 @@ const WordDetailCard = ({
           </div>
         </section>
 
-        {/* Related Information (Optional) */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <div className="w-1 h-6 bg-purple-600 rounded-full"></div>
-            <h2 className="text-2xl font-bold text-gray-900">
-              ຂໍ້ມູນເພີ່ມເຕີມ
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-3">
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
-              <h3 className="font-semibold text-purple-800 mb-2">ປະເພດຄຳ</h3>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">
-                  {part_of_speech}
-                </span>
-                {/* Add more word types if available */}
-              </div>
-            </div>
-
-            <div className="bg-amber-50 p-4 rounded-lg border border-amber-100">
-              <h3 className="font-semibold text-amber-800 mb-2">
-                ລະດັບຄວາມພົບເຫັນ
-              </h3>
-              <div className="flex items-center gap-2">
-                <div className="flex-1 bg-amber-200 rounded-full h-2">
-                  <div className="w-3/4 bg-amber-600 rounded-full h-2"></div>
-                </div>
-                <span className="text-sm font-medium text-amber-700">
-                  ພົບເຫັນບໍ່ຖີ່
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Footer Notes */}
         <div className="mt-8 pt-6 border-t border-gray-200">
           <p className="text-sm text-gray-500 text-center">

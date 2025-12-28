@@ -4,7 +4,6 @@ import { integer, text, pgTable, timestamp } from "drizzle-orm/pg-core";
 export const dictionary = pgTable("lao_dictionary", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   word: text("word").notNull(),
-  meaning: text("meaning").notNull(),
   pronuncation: text("pronunciation").notNull(),
   part_of_speech: text("part_of_speech"),
   search_countL: integer("search_count"),
