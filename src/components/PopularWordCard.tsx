@@ -6,7 +6,7 @@ const PopularWordCard = ({ word, examples, definitions }: DicionaryModel) => {
       {/* Word and Translation */}
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-[#205781]">{word}</h2>
-        <p className="text-lg text-gray-600">{definitions.filter((item)=> item.language == "la")[0].text}</p>
+        <p className="text-lg text-gray-600">{definitions.length > 0 && definitions.filter((item)=> item.language == "la")[0].text}</p>
       </div>
 
       {/* Example Sentence */}

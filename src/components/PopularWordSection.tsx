@@ -34,7 +34,7 @@ const PopularWordsSection = () => {
               word={word.word}
               pronuncation=""
               part_of_speech=""
-              definitions={[]}
+              definitions={word.definitions}
               examples={word.examples}
             />
           ))}
