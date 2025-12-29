@@ -6,14 +6,15 @@ const PopularWordCard = ({ word, examples, definitions }: DicionaryModel) => {
       {/* Word and Translation */}
       <div className="mb-4">
         <h2 className="text-2xl font-bold text-[#205781]">{word}</h2>
-        <p className="text-lg text-gray-600">{definitions.length > 0 && definitions.filter((item)=> item.language == "la")[0].text}</p>
+        <p className="text-lg text-gray-600">
+          {definitions.length > 0 &&
+            definitions[0].text}
+        </p>
       </div>
 
       {/* Example Sentence */}
       <div className="bg-gray-50 p-4 rounded-lg">
-        {examples.map((item) => (
-          <p className="text-gray-700 italic">"{item.text}"</p>
-        ))}
+        <p className="text-gray-700 italic">"{examples.length > 0 && examples[0].text}"</p>
       </div>
     </div>
   );
