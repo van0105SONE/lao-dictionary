@@ -8,7 +8,6 @@ const PopularWordsSection = () => {
 
   async function loadData() {
     const data = await getRecentWords();
-    console.log("word detail: ", data);
     if (data) {
       setWords(data);
     }

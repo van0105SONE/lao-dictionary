@@ -44,6 +44,11 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
                 ວັດຈະນານຸກົມ
               </Link>
             </li>
+            <li>
+              <Link href={`/aboutus`} className="text-white hover:text-gray-400">
+                ກຽວກັບພວກເຮົາ
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

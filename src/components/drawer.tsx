@@ -38,8 +38,8 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
 
                 </li>
                 <li>
-                    <Link href={`/grammar`} className="block p-4 hover:text-gray-400">
-                        ໄວຍະກອນ
+                    <Link href={`/aboutus`} className="block p-4 hover:text-gray-400">
+                        ກຽວກັບພວກເຮົາ
                     </Link>
                 </li>
             </ul>
