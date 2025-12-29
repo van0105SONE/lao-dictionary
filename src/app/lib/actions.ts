@@ -10,7 +10,7 @@ export const getRecentWords = async () => {
   const data = await db
     .select()
     .from(dictionary)
-    .limit(5)
+    .limit(6)
     .orderBy(dictionary.created_at);
 
    const  responseWord:DicionaryModel[] = []
@@ -60,7 +60,7 @@ export const getRecentWords = async () => {
 };
 
 export const getRecentCorrectIncorrect = async () => {
-  const data = await db.select().from(correct_and_incorrect).limit(5);
+  const data = await db.select().from(correct_and_incorrect).limit(6);
 
   const responseWord = data.map((item) => {
     const mapData: CorrectIncorrect = {

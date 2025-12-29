@@ -117,10 +117,36 @@ export default function AboutPage() {
                     priority
                   />
                 </div>
+
                 <h3 className="text-xl font-medium text-gray-900">
                   Chonlada Ssp
                 </h3>
                 <p className="mt-2 text-gray-600">Borum Volunteer 6Th</p>
+                <p className="mt-4 text-sm text-[#205781] font-medium">
+                  Vientiane, Laos
+                </p>
+              </div>
+
+              <div
+                key={2}
+                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
+                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
+              >
+                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
+                  <Image
+                    src="/thanusone.jpeg" // File must be in /public/aiy-yaethor.jpg
+                    alt="Contributor profile - thanusone"
+                    width={96}
+                    height={96}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+
+                <h3 className="text-xl font-medium text-gray-900">
+                  Thanusone PPG
+                </h3>
+                <p className="mt-2 text-gray-600">Borum Volunteer 5Th</p>
                 <p className="mt-4 text-sm text-[#205781] font-medium">
                   Vientiane, Laos
                 </p>
@@ -148,7 +174,7 @@ export default function AboutPage() {
                   Borum Volunteer 3Th & Staff At Somewhere
                 </p>
                 <p className="mt-4 text-sm text-[#205781] font-medium">
-                  Vientiane, Laos
+                  Laung-prabang, Laos
                 </p>
               </div>
             </div>
