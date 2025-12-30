@@ -9,21 +9,25 @@ const myFont = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "ຄຳສັບພາສາລາວ | Lao Dictionary & Learn Lao Language",
-    template: "%s | ຄຳສັບພາສາລາວ",
+    default:
+      "Lao Dictionary | ຄຳສັບພາສາລາວ - English-Lao Online Dictionary & Pronunciation",
+    template: "%s | Lao Dictionary ຄຳສັບພາສາລາວ",
   },
   description:
-    "ຮຽນພາສາລາວອອນລາຍ | Learn Lao language with Lao dictionary, Lao words, pronunciation, examples, and daily vocabulary. Best resource to learn Laos language.",
-
+    "Free online Lao-English dictionary with audio pronunciation, example sentences, and community contributions. Best resource to learn Lao language (ຮຽນພາສາລາວ) with thousands of words.",
   keywords: [
+    "lao dictionary",
+    "free dictionary",
+    "english lao dictionary",
+    "lao english dictionary",
+    "learn lao",
+    "learn lao language",
     "ຄຳສັບພາສາລາວ",
     "ຮຽນພາສາລາວ",
-    "learn lao",
-    "learn laos",
-    "lao dictionary",
-    "lao words",
-    "laos language",
     "ພາສາລາວ",
+    "ປະເທດລາວ",
+    "lao pronunciation",
+    "lao words",
   ],
 
   metadataBase: new URL("https://www.laoswords.com"),
@@ -37,7 +41,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "ຄຳສັບພາສາລາວ | Learn Lao Language",
+    title: "ຄຳສັບພາສາລາວ | ຮຽນພາສາລາວ | Learn Lao Language | lao dictionary",
     description:
       "Learn Lao language with a complete Lao dictionary, vocabulary, pronunciation, and examples.",
     url: "https://www.laoswords.com",
@@ -89,6 +93,37 @@ export default function RootLayout({
               page_path: window.location.pathname,
             });
           `}
+        </Script>
+
+        <link
+          rel="alternate"
+          hrefLang="en"
+          href="https://www.laoswords.com/en"
+        />
+        <link
+          rel="alternate"
+          hrefLang="lo"
+          href="https://www.laoswords.com/lo"
+        />
+        <link
+          rel="alternate"
+          hrefLang="x-default"
+          href="https://www.laoswords.com/"
+        />
+
+        <Script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Lao Dictionary",
+            alternateName: "ຄຳສັບພາສາລາວ",
+            url: "https://www.laoswords.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://www.laoswords.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          })}
         </Script>
       </head>
       <body className={myFont.className}>{children}</body>
