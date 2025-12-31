@@ -81,8 +81,9 @@ export default function RootLayout({
         {/* Google Advertisement */}
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8119173006530412"
-          crossorigin="anonymous"
+          src={"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8119173006530412"}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
         ></Script>
 
         {/* Google Analytics */}
