@@ -77,9 +77,58 @@ export default function AboutPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Example Contributor Cards - replace with real ones later */}
-
               <div
                 key={1}
+                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
+                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
+              >
+                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
+                  <Image
+                    src="/bovilay.jpeg" // File must be in /public/aiy-yaethor.jpg
+                    alt="Contributor profile - thanusone"
+                    width={96}
+                    height={96}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+
+                <h3 className="text-xl font-medium text-gray-900">
+                  Bovilay
+                </h3>
+                <p className="mt-2 text-gray-600">Borum Volunteer 6Th</p>
+                <p className="mt-4 text-sm text-[#205781] font-medium">
+                  Vientiane, Laos
+                </p>
+              </div>
+
+              <div
+                key={2}
+                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
+                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
+              >
+                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
+                  <Image
+                    src="/aoungeing.jpeg" // File must be in /public/aiy-yaethor.jpg
+                    alt="Contributor profile - thanusone"
+                    width={96}
+                    height={96}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+
+                <h3 className="text-xl font-medium text-gray-900">
+                  Aoungeing🤍
+                </h3>
+                <p className="mt-2 text-gray-600">Borum Volunteer 5Th</p>
+                <p className="mt-4 text-sm text-[#205781] font-medium">
+                  Vientiane, Laos
+                </p>
+              </div>
+
+              <div
+                key={3}
                 className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
                   hover:border-[#205781] hover:shadow-lg transition-all duration-300"
               >
@@ -103,7 +152,7 @@ export default function AboutPage() {
               </div>
 
               <div
-                key={2}
+                key={4}
                 className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
                   hover:border-[#205781] hover:shadow-lg transition-all duration-300"
               >
@@ -128,7 +177,7 @@ export default function AboutPage() {
               </div>
 
               <div
-                key={2}
+                key={5}
                 className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
                   hover:border-[#205781] hover:shadow-lg transition-all duration-300"
               >
@@ -153,7 +202,7 @@ export default function AboutPage() {
               </div>
 
               <div
-                key={3}
+                key={6}
                 className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
                   hover:border-[#205781] hover:shadow-lg transition-all duration-300"
               >

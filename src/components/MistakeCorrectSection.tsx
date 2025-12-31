@@ -1,21 +1,13 @@
 import { CorrectIncorrect } from "@/shared/model/CorrectIncorrect";
 import MistakeCorrectionCard from "./MistakeCorrectCard";
-import { useEffect, useState } from "react";
-import { getRecentCorrectIncorrect } from "@/app/lib/actions";
 
-const MistakeCorrectionSection = () => {
-  const [pairs, setPairs] = useState<CorrectIncorrect[]>([]);
-  async function loadData() {
-    const data = await getRecentCorrectIncorrect();
 
-    if (data) {
-      setPairs(data);
-    }
-  }
+interface MistakeCorrectIncorrectProps{
+   pairs: CorrectIncorrect[]
+}
+const MistakeCorrectionSection = ({pairs}:MistakeCorrectIncorrectProps) => {
 
-  useEffect(() => {
-    loadData();
-  }, []);
+
   return (
     <div className="bg-gradient-to-r from-[#4F959D] to-[#205781] py-12 px-6 mt-4">
       <div className="container mx-auto">

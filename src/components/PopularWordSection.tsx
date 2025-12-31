@@ -1,21 +1,13 @@
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
 import PopularWordCard from "./PopularWordCard";
-import { useEffect, useState } from "react";
-import { getRecentWords } from "@/app/lib/actions";
 
-const PopularWordsSection = () => {
-  const [words, setWords] = useState<DicionaryModel[]>([]);
 
-  async function loadData() {
-    const data = await getRecentWords();
-    if (data) {
-      setWords(data);
-    }
-  }
+interface PopularWordProps{
+  words: DicionaryModel[]
+}
+const PopularWordsSection = ({words}: PopularWordProps ) => {
 
-  useEffect(() => {
-    loadData();
-  }, []);
+
   return (
     <div className="mt-4 bg-gradient-to-r from-[#205781]  to-[#4F959D] py-12 px-6">
       <div className="container mx-auto">

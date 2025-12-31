@@ -19,7 +19,6 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   async function getWord() {
     const { id } = await params;
     const data = await getWordById(Number(id));
-    console.log("word detail: ", data);
     if (data) {
       setWord(data);
     }

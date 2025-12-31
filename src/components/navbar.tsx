@@ -41,11 +41,24 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
           <ul className="hidden lg:flex space-x-4 text-lg">
             <li>
               <Link href={`/`} className="text-white hover:text-gray-400">
-                ວັດຈະນານຸກົມ
+                ຫນ້າຫຼັກ
               </Link>
             </li>
             <li>
-              <Link href={`/aboutus`} className="text-white hover:text-gray-400">
+              <Link href={`/laos-words`} className="text-white hover:text-gray-400">
+                ຄຳສັບທັງໝົດ
+              </Link>
+            </li>
+            <li>
+              <Link href={`/correct-incorrect`} className="text-white hover:text-gray-400">
+                ຄຳຜິດ ແລະ ຖືກ
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={`/aboutus`}
+                className="text-white hover:text-gray-400"
+              >
                 ກຽວກັບພວກເຮົາ
               </Link>
             </li>
