@@ -131,6 +131,8 @@ export const getRecentWords = async () => {
   return responseWord;
 };
 
+
+// get correct and incorrect word.
 export const getRecentCorrectIncorrect = async () => {
   const data = await db
     .select()
