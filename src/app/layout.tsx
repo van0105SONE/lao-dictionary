@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | Lao Dictionary ຄຳສັບພາສາລາວ",
   },
   description:
-    "Free online Lao-English dictionary with audio pronunciation, example sentences, and community contributions. Best resource to learn Lao language (ຮຽນພາສາລາວ) with thousands of words.",
+    "ວັດຈະນານຸກົມ ລາວ-ອັງກິດ ອອນລາຍ ທີ່ນຳໃຊ້ໄດ້ຟຣີ, ຕົວຢ່າງປະໂຫຍກ, ແລະ ການມີສ່ວນຮ່ວມຈາກຊຸມຊົນ. ເປັນແຫຼ່ງຂໍ້ມູນທີ່ດີທີ່ສຸດໃນການ ຮຽນພາສາລາວ ເຊິ່ງລວບລວມເອົາຄຳສັບຫຼາຍພັນຄຳ.",
   keywords: [
     "lao dictionary",
     "free dictionary",

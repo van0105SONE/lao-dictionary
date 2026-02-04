@@ -25,7 +25,6 @@ const FALLBACK_PAIRS = [
 ];
 
 export default async function Home() {
-
   // Fetch data directly on the server (parallel!)
   const [wordsData, pairsData] = await Promise.all([
     getRecentWords().catch(() => FALLBACK_WORDS),
@@ -63,7 +62,7 @@ export default async function Home() {
           <div className="lg:col-span-1">
             <div className="sticky top-24 bg-gray-50 rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-medium text-gray-700 mb-4 text-center">
-                Advertisement
+                ໂຄສະໜາ
               </h4>
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
                 <Image
@@ -74,9 +73,6 @@ export default async function Home() {
                   priority
                 />
               </div>
-              <p className="text-sm text-gray-500 text-center mt-4">
-                Discover Lao culture and traditions
-              </p>
             </div>
           </div>
         </div>

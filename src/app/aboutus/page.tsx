@@ -23,12 +23,12 @@ export default function AboutPage() {
           {/* Page Title */}
           <div className="text-center space-y-6">
             <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900">
-              About {"  "}
-              <span className="font-medium text-[#205781]">Lao Dictionary</span>
+              ກຽວກັບພວກເຮົາ {"  "}
+              <span className="font-medium text-[#205781]">ຄຳສັບພາສາລາວ</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              A community-driven space preserving and sharing the beauty of the
-              Lao language.
+              ພື້ນທີ່ແຫ່ງການຮ່ວມມືຂອງຊຸມຊົນ ເພື່ອການອະນຸລັກ ແລະ
+              ເຜີຍແຜ່ຄວາມງົດງາມຂອງພາສາລາວ.
             </p>
           </div>
 
@@ -36,18 +36,24 @@ export default function AboutPage() {
           <section className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-light text-gray-900">
-                Our Vision
+                ວິໄສທັດຂອງພວກເຮົາ
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We created this dictionary to serve the global Lao community —
-                bringing together native speakers, learners, diaspora, and
-                cultural enthusiasts in one accessible place.
+                ພວກເຮົາສ້າງ ວັດຈະນານຸກົມພາສາລາວ
+                ນີ້ຂຶ້ນມາເພື່ອຮັບໃຊ້ຊຸມຊົນລາວໃນທົ່ວໂລກ —
+                ໂດຍການເປັນສູນລວມໃຫ້ແກ່ເຈົ້າຂອງພາສາ, ຜູ້ທີ່ກຳລັງ ຮຽນພາສາລາວ,
+                ຊາວລາວທີ່ຢູ່ຕ່າງປະເທດ, ແລະ ຜູ້ທີ່ສົນໃຈໃນວັດທະນະທຳລາວ
+                ໄດ້ເຂົ້າມານຳໃຊ້ໃນບ່ອນດຽວທີ່ເຂົ້າເຖິງໄດ້ງ່າຍ.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                In a digital world where many minority languages struggle to
-                find space, we believe every Lao word deserves to be documented,
-                pronounced, and passed on. This platform exists to keep our
-                language alive, evolving, and connected.
+                ໃນຍຸກທີ່ ປັນຍາປະດິດ (AI) ເຂົ້າມາມີບົດບາດຫຼາຍຂຶ້ນ, ການຊອກຫາ
+                ຂໍ້ມູນພາສາລາວທີ່ຖືກຕ້ອງ ແລະ ເຊື່ອຖືໄດ້ນັ້ນກາຍເປັນເລື່ອງຍາກ.
+                ຫຼາຍຄັ້ງທີ່ AI ອາດຈະໃຫ້ຂໍ້ມູນທີ່ຜິດພາດ ຫຼື ບໍ່ຄົບຖ້ວນ.
+                ພວກເຮົາຈຶ່ງເຊື່ອວ່າທຸກໆ ຄຳສັບລາວ ສົມຄວນໄດ້ຮັບການບັນທຶກ,
+                ການກວດສອບຄວາມຖືກຕ້ອງ, ແລະ ການສືບທອດຕໍ່ໆກັນໄປ.
+                ແພລດຟອມນີ້ສ້າງຂຶ້ນເພື່ອເປັນແຫຼ່ງອ້າງອີງທີ່ໜ້າເຊື່ອຖື
+                ເພື່ອເຮັດໃຫ້ພາສາຂອງພວກເຮົາຄົງຢູ່, ມີການພັດທະນາ, ແລະ
+                ເຊື່ອມໂຍງກັບທຸກຄົນຢ່າງຖືກຕ້ອງ.
               </p>
             </div>
             {/* Image Card - Full bleed, cropped nicely */}
@@ -60,185 +66,6 @@ export default function AboutPage() {
                 className="object-cover w-full h-full"
                 priority // Optional: load faster if above the fold
               />
-            </div>
-          </section>
-
-          {/* Contributors Section */}
-          <section className="space-y-12">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-light text-gray-900">
-                Community Contributors
-              </h2>
-              <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                This dictionary grows because of passionate people who
-                generously share their knowledge.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Example Contributor Cards - replace with real ones later */}
-              <div
-                key={1}
-                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
-                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
-                  <Image
-                    src="/bovilay.jpeg" // File must be in /public/aiy-yaethor.jpg
-                    alt="Contributor profile - thanusone"
-                    width={96}
-                    height={96}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-
-                <h3 className="text-xl font-medium text-gray-900">
-                  Bovilay
-                </h3>
-                <p className="mt-2 text-gray-600">Borum Volunteer 6Th</p>
-                <p className="mt-4 text-sm text-[#205781] font-medium">
-                  Vientiane, Laos
-                </p>
-              </div>
-
-              <div
-                key={2}
-                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
-                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
-                  <Image
-                    src="/aoungeing.jpeg" // File must be in /public/aiy-yaethor.jpg
-                    alt="Contributor profile - thanusone"
-                    width={96}
-                    height={96}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-
-                <h3 className="text-xl font-medium text-gray-900">
-                  Aoungeing🤍
-                </h3>
-                <p className="mt-2 text-gray-600">Borum Volunteer 5Th</p>
-                <p className="mt-4 text-sm text-[#205781] font-medium">
-                  Vientiane, Laos
-                </p>
-              </div>
-
-              <div
-                key={3}
-                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
-                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
-                  <Image
-                    src="/funfah.jpg" // File must be in /public/aiy-yaethor.jpg
-                    alt="Contributor profile - Aiy Yaethor"
-                    width={96}
-                    height={96}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-                <h3 className="text-xl font-medium text-gray-900">
-                  FunFah Favflower
-                </h3>
-                <p className="mt-2 text-gray-600">Borum Volunteer 5Th</p>
-                <p className="mt-4 text-sm text-[#205781] font-medium">
-                  Vientiane, Laos
-                </p>
-              </div>
-
-              <div
-                key={4}
-                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
-                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
-                  <Image
-                    src="/lao-culture.jpg" // File must be in /public/aiy-yaethor.jpg
-                    alt="Contributor profile - Aiy Yaethor"
-                    width={96}
-                    height={96}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-
-                <h3 className="text-xl font-medium text-gray-900">
-                  Chonlada Ssp
-                </h3>
-                <p className="mt-2 text-gray-600">Borum Volunteer 6Th</p>
-                <p className="mt-4 text-sm text-[#205781] font-medium">
-                  Vientiane, Laos
-                </p>
-              </div>
-
-              <div
-                key={5}
-                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
-                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
-                  <Image
-                    src="/thanusone.jpeg" // File must be in /public/aiy-yaethor.jpg
-                    alt="Contributor profile - thanusone"
-                    width={96}
-                    height={96}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-
-                <h3 className="text-xl font-medium text-gray-900">
-                  Thanusone PPG
-                </h3>
-                <p className="mt-2 text-gray-600">Borum Volunteer 5Th</p>
-                <p className="mt-4 text-sm text-[#205781] font-medium">
-                  Vientiane, Laos
-                </p>
-              </div>
-
-              <div
-                key={6}
-                className="group bg-white border border-gray-200 rounded-2xl p-8 text-center 
-                  hover:border-[#205781] hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 border-2 border-dashed  shadow-md mb-6">
-                  <Image
-                    src="/aiy-yaethor.jpg" // File must be in /public/aiy-yaethor.jpg
-                    alt="Contributor profile - Aiy Yaethor"
-                    width={96}
-                    height={96}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-                <h3 className="text-xl font-medium text-gray-900">
-                  Air Yae Thor
-                </h3>
-                <p className="mt-2 text-gray-600">
-                  Borum Volunteer 3Th & Staff At Somewhere
-                </p>
-                <p className="mt-4 text-sm text-[#205781] font-medium">
-                  Laung-prabang, Laos
-                </p>
-              </div>
-            </div>
-
-            <div className="text-center pt-8">
-              <p className="text-lg text-gray-700">
-                Want to contribute Lao words, pronunciations, or examples?
-              </p>
-              <a
-                href="/contribute"
-                className="inline-block mt-6 px-8 py-4 bg-[#205781] text-white hover:bg-[#1a4566] 
-                transition-colors duration-300 font-medium rounded-lg"
-              >
-                Become a Contributor
-              </a>
             </div>
           </section>
         </div>
