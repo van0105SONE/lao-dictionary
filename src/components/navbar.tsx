@@ -45,12 +45,10 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
               </Link>
             </li>
             <li>
-              <Link href={`/laos-words`} className="text-white hover:text-gray-400">
-                ຄຳສັບທັງໝົດ
-              </Link>
-            </li>
-            <li>
-              <Link href={`/correct-incorrect`} className="text-white hover:text-gray-400">
+              <Link
+                href={`/correct-incorrect`}
+                className="text-white hover:text-gray-400"
+              >
                 ຄຳຜິດ ແລະ ຖືກ
               </Link>
             </li>

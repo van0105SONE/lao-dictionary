@@ -105,11 +105,11 @@ export default function CorrectIncorrectPage() {
 
   useEffect(() => {
     loadPairs();
-  }, [loadPairs]);
+  }, []);
 
   useEffect(() => {
     loadPairs(debouncedKeyword || undefined);
-  }, [debouncedKeyword, loadPairs]);
+  }, [debouncedKeyword]);
 
   return (
     <div className="relative min-h-screen flex flex-col">
@@ -122,7 +122,8 @@ export default function CorrectIncorrectPage() {
           {/* Title + Search */}
           <div className="text-center space-y-6 sm:space-y-8 mb-12 sm:mb-16">
             <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-light text-gray-900 leading-tight">
-              ຄຳສັບຖືກ ແລະ ຜິດ
+              ຄຳສັບ <span className="text-green-600">ຖືກ</span> ແລະ{" "}
+              <span className="text-red-600">ຜິດ</span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 px-4">
               {loading ? "ກຳລັງໂຫຼດ..." : `${pairs.length} ຕົວຢ່າງທີ່ພົບເລື້ອຍ`}
@@ -187,7 +188,7 @@ export default function CorrectIncorrectPage() {
                 {/* Ad 1 */}
                 <div className="bg-gray-50 rounded-2xl p-8 shadow-soft text-center">
                   <p className="text-lg font-medium text-gray-700 mb-6">
-                    Advertisement
+                    ພື້ນທີ່ໂຄສະໜາ
                   </p>
                   <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
                     <Image
@@ -198,15 +199,12 @@ export default function CorrectIncorrectPage() {
                       priority
                     />
                   </div>
-                  <p className="text-sm text-gray-500 mt-4">
-                    Support the preservation of Lao language
-                  </p>
                 </div>
 
                 {/* Ad 2 */}
                 <div className="bg-gray-100 border-2 border-dashed rounded-2xl p-10 text-center text-gray-600">
-                  <p className="text-xl">Advertisement</p>
-                  <p className="text-sm mt-3">300×600 Skyscraper</p>
+                  <p className="text-xl"> ພື້ນທີ່ໂຄສະໜາ</p>
+                  <p className="text-sm mt-3">300×600 </p>
                 </div>
               </div>
             </aside>
@@ -217,7 +215,7 @@ export default function CorrectIncorrectPage() {
             {/* Ad 1 */}
             <div className="bg-gray-50 rounded-2xl p-8 shadow-soft text-center">
               <p className="text-lg font-medium text-gray-700 mb-6">
-                Advertisement
+                ພື້ນທີ່ໂຄສະໜາ
               </p>
               <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
                 <Image
@@ -227,15 +225,12 @@ export default function CorrectIncorrectPage() {
                   className="object-cover"
                 />
               </div>
-              <p className="text-sm text-gray-500 mt-4">
-                Support the preservation of Lao language
-              </p>
             </div>
 
             {/* Ad 2 */}
             <div className="bg-gray-100 border-2 border-dashed rounded-2xl p-10 text-center text-gray-600">
-              <p className="text-xl">Advertisement</p>
-              <p className="text-sm mt-3">300×600 Skyscraper</p>
+              <p className="text-xl">ພື້ນທີ່ໂຄສະໜາ</p>
+              <p className="text-sm mt-3">300×600 /</p>
             </div>
           </div>
         </div>

@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Script from "next/script";
+import { Noto_Serif_Lao } from "next/font/google";
 
 const myFont = localFont({
   src: "../../public/NotoSansLao_Condensed-Black.ttf",
+});
+
+const notoSerifLao = Noto_Serif_Lao({
+  subsets: ["lao"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -14,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Lao Dictionary ຄຳສັບພາສາລາວ",
   },
   description:
-    "ວັດຈະນານຸກົມ ລາວ-ອັງກິດ ອອນລາຍ ທີ່ນຳໃຊ້ໄດ້ຟຣີ, ຕົວຢ່າງປະໂຫຍກ, ແລະ ການມີສ່ວນຮ່ວມຈາກຊຸມຊົນ. ເປັນແຫຼ່ງຂໍ້ມູນທີ່ດີທີ່ສຸດໃນການ ຮຽນພາສາລາວ ເຊິ່ງລວບລວມເອົາຄຳສັບຫຼາຍພັນຄຳ.",
+    "ວັດຈະນານຸກົມ ລາວ-ອັງກິດ ອອນລາຍ ທີ່ນຳໃຊ້ໄດ້ຟຣີ, ຕົວຢ່າງປະໂຫຍກ. ເປັນແຫຼ່ງຂໍ້ມູນທີ່ດີທີ່ສຸດໃນການ ຮຽນພາສາລາວ ເຊິ່ງລວບລວມເອົາຄຳສັບຫຼາຍພັນຄຳ.",
   keywords: [
     "lao dictionary",
     "free dictionary",
@@ -26,6 +33,8 @@ export const metadata: Metadata = {
     "ຮຽນພາສາລາວ",
     "ພາສາລາວ",
     "ປະເທດລາວ",
+    "ປຽບທຽບຄຳສັບຖືກຜິດໃນພາສາລາວ",
+    "ຄຳສັບຖືກ ແລະ ຜິດ",
     "lao pronunciation",
     "lao words",
   ],
@@ -114,6 +123,11 @@ export default function RootLayout({
           href="https://www.laoswords.com/"
         />
 
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+Lao:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
+
         <Script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -129,7 +143,7 @@ export default function RootLayout({
           })}
         </Script>
       </head>
-      <body className={myFont.className}>{children}</body>
+      <body className={notoSerifLao.className}>{children}</body>
     </html>
   );
 }

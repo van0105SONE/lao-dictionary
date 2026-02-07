@@ -109,7 +109,7 @@ const WordDetailCard = ({
               <div className="flex gap-2">
                 <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                    ""
+                    "",
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -120,7 +120,7 @@ const WordDetailCard = ({
                 </a>
                 <a
                   href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                    ""
+                    "",
                   )}&text=${encodeURIComponent(`${word} - ${pronuncation}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -152,27 +152,33 @@ const WordDetailCard = ({
           </div>
 
           <div className="space-y-4 pl-3">
-            {definitions.map((item, index) => (
-              <div key={index} className="group">
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 mt-1 flex items-center justify-center bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                    {index + 1}
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-gray-700 text-lg leading-relaxed">
-                      {item.text}
-                    </p>
+            {[...definitions]
+              .sort((a, b) => {
+                if (a.language === "la" && b.language !== "la") return -1;
+                if (a.language !== "la" && b.language === "la") return 1;
+                return 0;
+              })
+              .map((item, index) => (
+                <div key={index} className="group">
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 mt-1 flex items-center justify-center bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                      {index + 1}
+                    </div>
+                    <div className="flex-1">
+                      <p className="mt-2 text-gray-500 text-sm italic pl-4 border-l-2 border-gray-200">
+                        ປະເພດຄຳ: {item.kind}
+                      </p>
 
-                    <p className="mt-2 text-gray-500 text-sm italic pl-4 border-l-2 border-gray-200">
-                      language: {item.language}
-                    </p>
+                      <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
+                        {item.text}
+                      </p>
+                    </div>
                   </div>
+                  {index < definitions.length - 1 && (
+                    <div className="h-px bg-gray-100 my-4 ml-9"></div>
+                  )}
                 </div>
-                {index < definitions.length - 1 && (
-                  <div className="h-px bg-gray-100 my-4 ml-9"></div>
-                )}
-              </div>
-            ))}
+              ))}
           </div>
         </section>
 

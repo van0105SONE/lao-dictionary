@@ -27,7 +27,7 @@ export default function AboutPage() {
               <span className="font-medium text-[#205781]">ຄຳສັບພາສາລາວ</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              ພື້ນທີ່ແຫ່ງການຮ່ວມມືຂອງຊຸມຊົນ ເພື່ອການອະນຸລັກ ແລະ
+              ພື້ນທີ່ແຫ່ງກຸ່ມຄົນ ເພື່ອການອະນຸລັກ ແລະ
               ເຜີຍແຜ່ຄວາມງົດງາມຂອງພາສາລາວ.
             </p>
           </div>
@@ -72,7 +72,13 @@ export default function AboutPage() {
       </main>
 
       {/* Footer */}
-      <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 h-16 row-start-3 flex gap-6 flex-wrap items-center justify-center "></footer>
+      <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 py-12 text-white">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-sm opacity-90">
+            © 2025 ຄຳສັບພາສາລາວ • Made with ❤️ for the Lao community
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
