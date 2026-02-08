@@ -7,7 +7,7 @@ import style from "./search.module.css";
 import kingdergarden from "../../public/kindergarten.png";
 import reading from "../../public/reading.png";
 import Link from "next/link";
-import { BiChevronRight, BiWorld } from "react-icons/bi";
+import { BiWorld } from "react-icons/bi";
 import { searchWord } from "@/app/lib/searchActions";
 
 export interface SearchCardProps {
@@ -60,7 +60,7 @@ const SearchCard = () => {
     fetchWord(debouncedKeyword);
   }, [debouncedKeyword, fetchWord]);
   return (
-    <div className="bg-gradient-to-r from-[#205781] to-[#4F959D]  w-full p-6 h-96 pt-24 relative overflow-hidden ">
+    <div className="bg-gradient-to-r from-[#205781] to-[#4F959D]  w-full p-6 h-96 pt-24 relative overflow-visible ">
       {/* Background Icons (Floating Animation) */}
       <div className="absolute inset-0 z-0">
         <div className={`absolute bottom-0 left-0 ${style.animate_float}`}>
@@ -210,21 +210,20 @@ const SearchCard = () => {
         </div>
 
         {/* Search Results */}
-        <div className="flex flex-col mx-2 text-lg z-50">
-          <ul className="border-y border-gray-100 divide-y divide-gray-100">
+        <div className="absolute left-0 right-0 top-full mt-2 z-50">
+          <ul className="bg-white border border-gray-200 rounded-lg shadow-xl divide-y divide-gray-100">
             {words.map((word) => (
               <li
                 key={word.id}
-                className="group relative flex items-center py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white hover:shadow-sm hover:scale-[1.02] border-b border-gray-100 last:border-b-0"
+                className="group flex items-center py-3 px-4 transition-all duration-300 hover:bg-gray-50"
               >
                 <Link
                   href={`/[id]`}
                   as={`/${word.id}`}
-                  className="flex items-center w-full text-left no-underline"
+                  className="flex items-center w-full no-underline"
                 >
-                  {/* Minimal checkmark with subtle animation */}
                   <div className="flex-shrink-0 mr-4">
-                    <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:bg-green-100">
+                    <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center group-hover:scale-110 transition">
                       <svg
                         className="w-5 h-5 text-green-600"
                         fill="none"
@@ -241,16 +240,11 @@ const SearchCard = () => {
                     </div>
                   </div>
 
-                  {/* Word with elegant typography */}
-                  <div className="flex-1">
-                    <span className="text-lg font-medium text-gray-800 group-hover:text-green-700 transition-colors duration-300">
-                      {word.word}
-                    </span>
-                  
-                  </div>
+                  <span className="flex-1 text-lg font-medium text-gray-800 group-hover:text-green-700">
+                    {word.word}
+                  </span>
 
-                  {/* Subtle arrow on hover */}
-                  <BiWorld className="w-5 h-5 text-gray-400 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300" />
+                  <BiWorld className="w-5 h-5 text-gray-400 opacity-0 group-hover:opacity-100 transition" />
                 </Link>
               </li>
             ))}
