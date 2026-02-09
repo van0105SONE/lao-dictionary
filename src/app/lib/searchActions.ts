@@ -30,13 +30,19 @@ export const searchWord = async (keyword: string) => {
   return responseWord;
 };
 
-export const getWordById = async (id: number) => {
-  const data = await db.select().from(dictionary).where(eq(dictionary.id, id));
+export const getWordByWord = async (word: string) => {
+
+  const decoded = decodeURIComponent(word);
+  const data = await db
+    .select()
+    .from(dictionary)
+    .where(eq(dictionary.word, decoded));
+
   if (data) {
     const defs = await db
       .select()
       .from(definitions)
-      .where(eq(definitions.wordId, id));
+      .where(eq(definitions.wordId, data[0].id));
 
     const definitionDetails = await Promise.all(
       defs.map(async (d) => {
@@ -45,11 +51,14 @@ export const getWordById = async (id: number) => {
           .from(definitionTexts)
           .where(eq(definitionTexts.definitionId, d.id));
         return texts;
-      })
+      }),
     );
 
     // fetch examples + example sentences
-    const exs = await db.select().from(examples).where(eq(examples.wordId, id));
+    const exs = await db
+      .select()
+      .from(examples)
+      .where(eq(examples.wordId, data[0].id));
 
     const exampleDetails = await Promise.all(
       exs.map(async (e) => {
@@ -58,7 +67,7 @@ export const getWordById = async (id: number) => {
           .from(exampleSentences)
           .where(eq(exampleSentences.exampleId, e.id));
         return sentences;
-      })
+      }),
     );
 
     const mapData: DicionaryModel = {

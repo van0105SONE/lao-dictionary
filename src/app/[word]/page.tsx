@@ -2,11 +2,11 @@
 
 import WordDetailCard from "@/components/WordDetailCard";
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
-import { getWordById } from "@/app/lib/searchActions";
+import { getWordByWord } from "@/app/lib/searchActions";
 import { useEffect, useState } from "react";
 import Header from "@/components/header";
 
-export default function Page({ params }: { params: Promise<{ id: string }> }) {
+export default function Page({ params }: { params: Promise<{ word: string }> }) {
   const [word, setWord] = useState<DicionaryModel>({
     id: 0,
     word: "",
@@ -17,8 +17,8 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   });
 
   async function getWord() {
-    const { id } = await params;
-    const data = await getWordById(Number(id));
+    const { word } = await params;
+    const data = await getWordByWord(word);
     if (data) {
       setWord(data);
     }

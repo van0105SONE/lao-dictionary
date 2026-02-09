@@ -214,12 +214,12 @@ const SearchCard = () => {
           <ul className="bg-white border border-gray-200 rounded-lg shadow-xl divide-y divide-gray-100">
             {words.map((word) => (
               <li
-                key={word.id}
+                key={word.word}
                 className="group flex items-center py-3 px-4 transition-all duration-300 hover:bg-gray-50"
               >
                 <Link
                   href={`/[id]`}
-                  as={`/${word.id}`}
+                  as={`/${word.word}`}
                   className="flex items-center w-full no-underline"
                 >
                   <div className="flex-shrink-0 mr-4">

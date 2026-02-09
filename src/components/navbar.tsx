@@ -57,7 +57,7 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
                 href={`/aboutus`}
                 className="text-white hover:text-gray-400"
               >
-                ກຽວກັບພວກເຮົາ
+                ກ່ຽວກັບພວກເຮົາ
               </Link>
             </li>
           </ul>

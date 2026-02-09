@@ -16,6 +16,7 @@ function PairCard({ pair }: PairCardProps) {
   return (
     <div className="p-6 bg-white rounded-2xl shadow-soft border border-transparent hover:border-[#205781]/40 hover:shadow-xl transition-all duration-300">
       <div className="space-y-6">
+        
         {/* Incorrect → Correct */}
         <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 sm:gap-6">
           <span className="text-3xl xs:text-4xl sm:text-5xl font-medium text-red-600 line-through leading-tight">
