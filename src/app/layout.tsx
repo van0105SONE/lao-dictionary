@@ -16,19 +16,23 @@ const notoSerifLao = Noto_Serif_Lao({
 
 export const metadata: Metadata = {
   title: {
-    default:
-      "Lao Dictionary | ຄຳສັບພາສາລາວ - English-Lao Online Dictionary & Pronunciation",
+    default: " ຄຳພາສາລາວ - ຮຽນພາສາລາວບ້ານເຮົາ | Lao Dictionary & Language",
     template: "%s | Lao Dictionary ຄຳສັບພາສາລາວ",
   },
   description:
     "ວັດຈະນານຸກົມ ລາວ-ອັງກິດ ອອນລາຍ ທີ່ນຳໃຊ້ໄດ້ຟຣີ, ຕົວຢ່າງປະໂຫຍກ. ເປັນແຫຼ່ງຂໍ້ມູນທີ່ດີທີ່ສຸດໃນການ ຮຽນພາສາລາວ ເຊິ່ງລວບລວມເອົາຄຳສັບຫຼາຍພັນຄຳ.",
   keywords: [
+    "ເວົ້າລາວ",
+    "ຄຳລາວ",
+    "ຄຳສັບລາວ",
+    "ປື້ມຄຳສັບພາສາລາວ",
     "lao dictionary",
     "free dictionary",
     "english lao dictionary",
     "lao english dictionary",
     "learn lao",
     "learn lao language",
+    "ຄຳສັບລາວ",
     "ຄຳສັບພາສາລາວ",
     "ຮຽນພາສາລາວ",
     "ພາສາລາວ",
@@ -50,7 +54,8 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "ຄຳສັບພາສາລາວ | ຮຽນພາສາລາວ | Learn Lao Language | lao dictionary",
+    title:
+      "ຄຳສັບລາວ | ຄຳສັບພາສາລາວ | ຮຽນພາສາລາວ | Learn Lao Language | lao dictionary",
     description:
       "Learn Lao language with a complete Lao dictionary, vocabulary, pronunciation, and examples.",
     url: "https://www.laoswords.com",

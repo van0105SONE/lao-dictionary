@@ -23,7 +23,7 @@ export default function AboutPage() {
           {/* Page Title */}
           <div className="text-center space-y-6">
             <h1 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900">
-              ກຽວກັບພວກເຮົາ {"  "}
+              ກ່ຽວກັບພວກເຮົາ {"  "}
               <span className="font-medium text-[#205781]">ຄຳສັບພາສາລາວ</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">

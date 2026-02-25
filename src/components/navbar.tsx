@@ -1,5 +1,5 @@
 import Image from "next/image";
-import laos from "../../public/laos.png"; // Adjust the path to your image
+import laos from "../../public/logo.png"; // Adjust the path to your image
 import Link from "next/link";
 
 export interface HeaderProps {
@@ -34,11 +34,11 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
           </button>
 
           <a href="#" className="text-white text-lg font-bold mx-6">
-            <Image src={laos} alt=""></Image>
+            <Image src={laos} className="w-12 h-12" alt=""></Image>
           </a>
 
           {/* Navbar Menu (Visible on Desktop) */}
-          <ul className="hidden lg:flex space-x-4 text-lg">
+          <ul className="hidden lg:flex space-x-4 text-lg my-auto">
             <li>
               <Link href={`/`} className="text-white hover:text-gray-400">
                 ຫນ້າຫຼັກ

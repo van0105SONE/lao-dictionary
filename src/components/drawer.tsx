@@ -56,7 +56,7 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
         </li>
         <li>
           <Link href={`/aboutus`} className="block p-4 hover:text-gray-400">
-            ກຽວກັບພວກເຮົາ
+            ກ່ຽວກັບພວກເຮົາ
           </Link>
         </li>
       </ul>

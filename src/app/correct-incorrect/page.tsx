@@ -3,7 +3,6 @@
 
 import Header from "@/components/header";
 import Image from "next/image";
-import laoWomen from "../../../public/lao-women.jpg";
 import { getCorrectIncorrectPairs } from "../lib/actions";
 import { CorrectIncorrect } from "@/shared/model/CorrectIncorrect";
 import { useCallback, useEffect, useState } from "react";
@@ -19,22 +18,22 @@ function PairCard({ pair }: PairCardProps) {
         
         {/* Incorrect → Correct */}
         <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 sm:gap-6">
-          <span className="text-3xl xs:text-4xl sm:text-5xl font-medium text-red-600 line-through leading-tight">
+          <span className="text-2xl xs:text-3xl sm:text-4xl font-medium text-red-600 line-through leading-tight">
             {pair.incorrect_word}
           </span>
 
           {/* Arrow: horizontal on larger screens, vertical on mobile */}
-          <span className="text-3xl text-gray-500 hidden sm:inline">→</span>
-          <span className="text-3xl text-gray-500 sm:hidden">↓</span>
+          <span className="text-2xl text-gray-500 hidden sm:inline">→</span>
+          <span className="text-2xl text-gray-500 sm:hidden">↓</span>
 
-          <span className="text-3xl xs:text-4xl sm:text-5xl font-medium text-[#205781] leading-tight">
+          <span className="text-2xl xs:text-3xl sm:text-4xl font-medium text-[#205781] leading-tight">
             {pair.correct_word}
           </span>
         </div>
 
         {/* Explanation */}
         {pair.explanation && (
-          <p className="text-base sm:text-lg text-gray-700 italic pl-1 leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-700 italic pl-1 leading-relaxed">
             {pair.explanation}
           </p>
         )}
@@ -122,11 +121,11 @@ export default function CorrectIncorrectPage() {
         <div className="pt-12 max-w-7xl mx-auto">
           {/* Title + Search */}
           <div className="text-center space-y-6 sm:space-y-8 mb-12 sm:mb-16">
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-light text-gray-900 leading-tight">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 leading-tight">
               ຄຳສັບ <span className="text-green-600">ຖືກ</span> ແລະ{" "}
               <span className="text-red-600">ຜິດ</span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 px-4">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
               {loading ? "ກຳລັງໂຫຼດ..." : `${pairs.length} ຕົວຢ່າງທີ່ພົບເລື້ອຍ`}
             </p>
 
@@ -137,7 +136,7 @@ export default function CorrectIncorrectPage() {
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
                 placeholder="ຄົ້ນຫາຄຳຜິດ ຫຼື ຄຳຖືກ... (ຕົວຢ່າງ: ດີ້ ຫຼື ສະບາຍດີ)"
-                className="w-full px-6 py-4 sm:px-8 sm:py-5 text-base sm:text-lg rounded-full border border-gray-300 shadow-md focus:outline-none focus:ring-4 focus:ring-[#205781]/30 focus:border-[#205781] transition-all"
+                className="w-full px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base md:text-lg rounded-full border border-gray-300 shadow-md focus:outline-none focus:ring-4 focus:ring-[#205781]/30 focus:border-[#205781] transition-all"
                 autoFocus
               />
             </div>
@@ -147,30 +146,32 @@ export default function CorrectIncorrectPage() {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* List of pairs */}
             <div className="lg:col-span-2">
-              {loading ? (
-                <div className="text-center py-20">
-                  <p className="text-2xl text-gray-500">ກຳລັງໂຫຼດຂໍ້ມູນ...</p>
-                </div>
-              ) : pairs.length === 0 ? (
-                <div className="text-center py-20">
-                  <p className="text-2xl text-gray-600">ບໍ່ພົບຄຳທີ່ຄົ້ນຫາ</p>
-                </div>
-              ) : (
-                <div className="space-y-10 sm:space-y-12">
-                  {pairs.map((pair, index) => (
-                    <div
-                      key={
-                        pair.id || `${pair.incorrect_word}-${pair.correct_word}`
-                      }
-                    >
-                      <PairCard pair={pair} />
-                      {index < pairs.length - 1 && (
-                        <div className="mt-10 sm:mt-12 border-t-2 border-dotted border-gray-300" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-soft">
+                {loading ? (
+                  <div className="text-center py-20">
+                    <p className="text-2xl text-gray-500">ກຳລັງໂຫຼດຂໍ້ມູນ...</p>
+                  </div>
+                ) : pairs.length === 0 ? (
+                  <div className="text-center py-20">
+                    <p className="text-2xl text-gray-600">ບໍ່ພົບຄຳທີ່ຄົ້ນຫາ</p>
+                  </div>
+                ) : (
+                  <div className="space-y-10 sm:space-y-12">
+                    {pairs.map((pair, index) => (
+                      <div
+                        key={
+                          pair.id || `${pair.incorrect_word}-${pair.correct_word}`
+                        }
+                      >
+                        <PairCard pair={pair} />
+                        {index < pairs.length - 1 && (
+                          <div className="mt-10 sm:mt-12 border-t-2 border-dotted border-gray-300" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* Inline ad */}
               {!loading && pairs.length > 8 && (
@@ -192,13 +193,6 @@ export default function CorrectIncorrectPage() {
                     ພື້ນທີ່ໂຄສະໜາ
                   </p>
                   <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
-                    <Image
-                      src={laoWomen}
-                      alt="Lao culture and traditions"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
                   </div>
                 </div>
 
@@ -219,12 +213,7 @@ export default function CorrectIncorrectPage() {
                 ພື້ນທີ່ໂຄສະໜາ
               </p>
               <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
-                <Image
-                  src={laoWomen}
-                  alt="Lao culture and traditions"
-                  fill
-                  className="object-cover"
-                />
+
               </div>
             </div>
 

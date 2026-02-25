@@ -5,7 +5,6 @@ import CharacterGrid from "@/components/CharGrid";
 import PopularWordsSection from "@/components/PopularWordSection";
 import MistakeCorrectionSection from "@/components/MistakeCorrectSection";
 import Header from "@/components/header";
-import laoWomen from "../../public/lao-women.jpg";
 import { LAO_ALPHABET } from "@/shared/constant/global-contant";
 import { getRecentWords, getRecentCorrectIncorrect } from "./lib/actions";
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
@@ -65,13 +64,7 @@ export default async function Home() {
                 ໂຄສະໜາ
               </h4>
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
-                <Image
-                  src={laoWomen}
-                  alt="Lao women in traditional sinh and cultural attire"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+
               </div>
             </div>
           </div>
