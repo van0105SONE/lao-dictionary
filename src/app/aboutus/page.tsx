@@ -1,7 +1,32 @@
 // app/about/page.tsx (or components/AboutPage.tsx)
-
+import type { Metadata } from "next";
 import Header from "@/components/header";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "ກ່ຽວກັບພວກເຮົາ | ຄຳສັບພາສາລາວ",
+  description:
+    "ພວກເຮົາສ້າງ ວັດຈະນານຸກົມພາສາລາວ ນີ້ຂຶ້ນມາເພື່ອຮັບໃຊ້ຊຸມຊົນລາວໃນທົ່ວໂລກ. ເປັນສູນລວມຄຳສັບພາສາລາວ, ການຮຽນພາສາລາວ ແລະ ຄຳຖືກ ຜິດ ໃນພາສາລາວ.",
+  keywords: [
+    "ກ່ຽວກັບພວກເຮົາ",
+    "ຄຳສັບພາສາລາວ",
+    "ວັດຈະນານຸກົມລາວ",
+    "lao dictionary",
+    "about lao dictionary",
+  ],
+  alternates: {
+    canonical: "/aboutus",
+  },
+  openGraph: {
+    title: "ກ່ຽວກັບພວກເຮົາ | ຄຳສັບພາສາລາວ",
+    description:
+      "ພວກເຮົາສ້າງ ວັດຈະນານຸກົມພາສາລາວ ນີ້ຂຶ້ນມາເພື່ອຮັບໃຊ້ຊຸມຊົນລາວໃນທົ່ວໂລກ.",
+    url: "https://www.laoswords.com/aboutus",
+    siteName: "ຄຳສັບພາສາລາວ",
+    locale: "lo_LA",
+    type: "website",
+  },
+};
 
 export default function AboutPage() {
   return (

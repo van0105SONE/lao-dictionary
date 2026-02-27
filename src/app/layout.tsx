@@ -16,31 +16,34 @@ const notoSerifLao = Noto_Serif_Lao({
 
 export const metadata: Metadata = {
   title: {
-    default: " ຄຳພາສາລາວ - ຮຽນພາສາລາວບ້ານເຮົາ | Lao Dictionary & Language",
-    template: "%s | Lao Dictionary ຄຳສັບພາສາລາວ",
+    default:
+      "ຄຳສັບພາສາລາວ | ວັດຈະນານຸກົມລາວ-ອັງກິດ | Lao Dictionary Online",
+    template: "%s | ຄຳສັບພາສາລາວ – laoswords.com",
   },
   description:
-    "ວັດຈະນານຸກົມ ລາວ-ອັງກິດ ອອນລາຍ ທີ່ນຳໃຊ້ໄດ້ຟຣີ, ຕົວຢ່າງປະໂຫຍກ. ເປັນແຫຼ່ງຂໍ້ມູນທີ່ດີທີ່ສຸດໃນການ ຮຽນພາສາລາວ ເຊິ່ງລວບລວມເອົາຄຳສັບຫຼາຍພັນຄຳ.",
+    "ວັດຈະນານຸກົມລາວ-ອັງກິດ ອອນລາຍ ຟຣີ. ຄົ້ນຫາ ຄຳສັບພາສາລາວ, ຄຳຖືກ ແລະ ຜິດ, ການອອກສຽງ ແລະ ຕົວຢ່າງປະໂຫຍກ. ແຫຼ່ງຮຽນພາສາລາວທີ່ດີທີ່ສຸດ ລວບລວມຄຳສັບຫຼາຍພັນຄຳ.",
   keywords: [
-    "ເວົ້າລາວ",
-    "ຄຳລາວ",
-    "ຄຳສັບລາວ",
-    "ປື້ມຄຳສັບພາສາລາວ",
-    "lao dictionary",
-    "free dictionary",
-    "english lao dictionary",
-    "lao english dictionary",
-    "learn lao",
-    "learn lao language",
-    "ຄຳສັບລາວ",
     "ຄຳສັບພາສາລາວ",
+    "ຄຳສັບລາວ",
+    "ວັດຈະນານຸກົມລາວ",
     "ຮຽນພາສາລາວ",
     "ພາສາລາວ",
+    "ຄຳຖືກ ແລະ ຜິດ",
+    "ຄຳຜິດ ລາວ",
+    "ຄຳສັບຖືກ ຜິດ",
+    "ຄຳລາວ",
+    "ເວົ້າລາວ",
+    "ປື້ມຄຳສັບພາສາລາວ",
     "ປະເທດລາວ",
-    "ປຽບທຽບຄຳສັບຖືກຜິດໃນພາສາລາວ",
-    "ຄຳສັບຖືກ ແລະ ຜິດ",
-    "lao pronunciation",
+    "lao dictionary",
+    "lao english dictionary",
+    "english lao dictionary",
+    "learn lao",
+    "learn lao language",
     "lao words",
+    "lao vocabulary",
+    "lao pronunciation",
+    "free lao dictionary",
   ],
 
   metadataBase: new URL("https://www.laoswords.com"),
@@ -55,19 +58,29 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "ຄຳສັບລາວ | ຄຳສັບພາສາລາວ | ຮຽນພາສາລາວ | Learn Lao Language | lao dictionary",
+      "ຄຳສັບພາສາລາວ | ວັດຈະນານຸກົມລາວ-ອັງກິດ | Lao Dictionary Online",
     description:
-      "Learn Lao language with a complete Lao dictionary, vocabulary, pronunciation, and examples.",
+      "ຄົ້ນຫາ ຄຳສັບພາສາລາວ, ຄຳຖືກ ແລະ ຜິດ, ການອອກສຽງ ແລະ ຕົວຢ່າງປະໂຫຍກ. Learn Lao language with a complete Lao-English dictionary.",
     url: "https://www.laoswords.com",
     siteName: "ຄຳສັບພາສາລາວ",
     locale: "lo_LA",
     type: "website",
+    images: [
+      {
+        url: "/dictionary_logo.png",
+        width: 1200,
+        height: 630,
+        alt: "ຄຳສັບພາສາລາວ – Lao Dictionary",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "ຄຳສັບພາສາລາວ",
-    description: "Best website to learn Lao language and Lao vocabulary",
+    title: "ຄຳສັບພາສາລາວ | Lao Dictionary Online",
+    description:
+      "ຄົ້ນຫາ ຄຳສັບພາສາລາວ, ຄຳຖືກ ແລະ ຜິດ. Best free Lao dictionary online.",
+    images: ["/dictionary_logo.png"],
   },
 
   robots: {
@@ -76,6 +89,8 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 
@@ -90,7 +105,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="lo">
       <head>
         {/* Google Advertisement */}
         <meta name="google-adsense-account" content="ca-pub-8119173006530412" />
@@ -137,12 +152,19 @@ export default function RootLayout({
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "Lao Dictionary",
-            alternateName: "ຄຳສັບພາສາລາວ",
+            name: "ຄຳສັບພາສາລາວ",
+            alternateName: ["Lao Dictionary", "laoswords.com", "ວັດຈະນານຸກົມລາວ"],
+            description:
+              "ວັດຈະນານຸກົມລາວ-ອັງກິດ ອອນລາຍ ຟຣີ. ຄົ້ນຫາ ຄຳສັບພາສາລາວ, ຄຳຖືກ ແລະ ຜິດ ແລະ ຕົວຢ່າງປະໂຫຍກ.",
             url: "https://www.laoswords.com",
+            inLanguage: "lo",
             potentialAction: {
               "@type": "SearchAction",
-              target: "https://www.laoswords.com/search?q={search_term_string}",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate:
+                  "https://www.laoswords.com/search?q={search_term_string}",
+              },
               "query-input": "required name=search_term_string",
             },
           })}
