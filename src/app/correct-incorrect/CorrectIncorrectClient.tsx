@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import { getCorrectIncorrectPairs } from "../lib/actions";
 import { CorrectIncorrect } from "@/shared/model/CorrectIncorrect";
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 
 interface PairCardProps {
   pair: CorrectIncorrect;
@@ -11,8 +12,8 @@ interface PairCardProps {
 
 function PairCard({ pair }: PairCardProps) {
   return (
-    <div className="p-6 bg-white rounded-2xl shadow-soft border border-transparent hover:border-[#205781]/40 hover:shadow-xl transition-all duration-300">
-      <div className="space-y-6">
+    <div className="group p-6 bg-white rounded-2xl shadow-soft border border-transparent hover:border-[#205781]/40 hover:shadow-xl transition-all duration-300 flex flex-col gap-4">
+      <div className="space-y-4">
         {/* Incorrect → Correct */}
         <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 sm:gap-6">
           <span className="text-2xl xs:text-3xl sm:text-4xl font-medium text-red-600 line-through leading-tight">
@@ -35,6 +36,20 @@ function PairCard({ pair }: PairCardProps) {
           </p>
         )}
       </div>
+
+      {/* Detail button */}
+      <Link
+        href={`/correct-incorrect/${pair.id}`}
+        className="mt-auto flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-[#205781]/8 text-[#205781] font-semibold text-sm hover:bg-[#205781] hover:text-white transition-all duration-200 border border-[#205781]/20 hover:border-[#205781]"
+      >
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        ເບິ່ງລາຍລະອຽດ
+        <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </Link>
     </div>
   );
 }
@@ -121,6 +136,8 @@ export default function CorrectIncorrectClient() {
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 leading-tight">
               ຄຳສັບ <span className="text-green-600">ຖືກ</span> ແລະ{" "}
               <span className="text-red-600">ຜິດ</span>
+              {/* Hidden keyword variant for SEO – no-space form "ຄຳຖືກແລະຜິດ" */}
+              <span className="sr-only">ຄຳຖືກແລະຜິດ · ຄຳສັບຖືກແລະຜິດ</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">
               {loading ? "ກຳລັງໂຫຼດ..." : `${pairs.length} ຕົວຢ່າງທີ່ພົບເລື້ອຍ`}
