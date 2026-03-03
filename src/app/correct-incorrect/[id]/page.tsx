@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import Header from "@/components/header";
+import Footer from "@/components/Footer";
 import { getCorrectIncorrectById } from "@/app/lib/searchActions";
 
 interface PageProps {
@@ -174,13 +175,7 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
         </div>
       </main>
 
-      <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 py-12 text-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-sm opacity-90">
-            © 2025 ຄຳສັບພາສາລາວ • Made with ❤️ for the Lao community
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

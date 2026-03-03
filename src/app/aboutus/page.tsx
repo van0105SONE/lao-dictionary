@@ -1,6 +1,7 @@
 // app/about/page.tsx (or components/AboutPage.tsx)
 import type { Metadata } from "next";
 import Header from "@/components/header";
+import Footer from "@/components/Footer";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -96,14 +97,7 @@ export default function AboutPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 py-12 text-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-sm opacity-90">
-            © 2025 ຄຳສັບພາສາລາວ • Made with ❤️ for the Lao community
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

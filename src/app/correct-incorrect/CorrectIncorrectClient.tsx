@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/header";
+import Footer from "@/components/Footer";
 import { getCorrectIncorrectPairs } from "../lib/actions";
 import { CorrectIncorrect } from "@/shared/model/CorrectIncorrect";
 import { useCallback, useEffect, useState } from "react";
@@ -156,7 +157,7 @@ export default function CorrectIncorrectClient() {
             </div>
           </div>
 
-          {/* Content + Ads Grid */}
+          {/* Content Grid */}
           <div className="grid lg:grid-cols-3 gap-8">
             {/* List of pairs */}
             <div className="lg:col-span-2">
@@ -186,64 +187,57 @@ export default function CorrectIncorrectClient() {
                   </div>
                 )}
               </div>
-
-              {/* Inline ad */}
-              {!loading && pairs.length > 8 && (
-                <div className="my-16 bg-gray-50 border-2 border-dashed border-gray-300 rounded-2xl p-10 text-center text-gray-600">
-                  <p className="text-xl font-medium">Advertisement</p>
-                  <p className="text-sm mt-3">
-                    (728×90 or 300×250 - Google AdSense ready)
-                  </p>
-                </div>
-              )}
             </div>
 
-            {/* Sidebar ads - hidden on mobile, visible beside on lg+ */}
-            <aside className="hidden lg:block lg:col-span-1 space-y-10">
-              <div className="sticky top-24 space-y-10">
-                {/* Ad 1 */}
-                <div className="bg-gray-50 rounded-2xl p-8 shadow-soft text-center">
-                  <p className="text-lg font-medium text-gray-700 mb-6">
-                    ພື້ນທີ່ໂຄສະໜາ
-                  </p>
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-xl" />
+            {/* Sidebar – Tips & Related Links */}
+            <aside className="lg:col-span-1">
+              <div className="sticky top-24 space-y-6">
+                {/* Spelling tips */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                  <h3 className="text-lg font-semibold text-[#205781] mb-4">
+                    💡 ເຄັດລັບການສະກົດ
+                  </h3>
+                  <ul className="space-y-3 text-sm text-gray-600">
+                    <li className="flex gap-2">
+                      <span className="text-amber-500">•</span>
+                      ກວດເບິ່ງສະຫຼະ ແລະ ວັນນະຍຸດ ໃຫ້ຖືກຕ້ອງ
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-amber-500">•</span>
+                      ຫຼີກລ້ຽງການໃຊ້ຕົວເລກສຽງທີ່ບໍ່ຈຳເປັນ
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-amber-500">•</span>
+                      ອ່ານຄຳອະທິບາຍເພື່ອເຂົ້າໃຈກົດຂອງພາສາ
+                    </li>
+                  </ul>
                 </div>
 
-                {/* Ad 2 */}
-                <div className="bg-gray-100 border-2 border-dashed rounded-2xl p-10 text-center text-gray-600">
-                  <p className="text-xl"> ພື້ນທີ່ໂຄສະໜາ</p>
-                  <p className="text-sm mt-3">300×600 </p>
+                {/* Quick links */}
+                <div className="bg-gradient-to-br from-[#205781] to-[#4F959D] rounded-2xl p-6 text-white shadow-sm">
+                  <h3 className="text-lg font-semibold mb-3">
+                    🔗 ລິ້ງທີ່ກ່ຽວຂ້ອງ
+                  </h3>
+                  <ul className="space-y-2 text-sm text-white/90">
+                    <li>
+                      <a href="/" className="hover:text-white transition-colors underline">
+                        ➜ ຄົ້ນຫາຄຳສັບ
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/aboutus" className="hover:text-white transition-colors underline">
+                        ➜ ກ່ຽວກັບພວກເຮົາ
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </aside>
           </div>
-
-          {/* Mobile-only ads (below content) */}
-          <div className="lg:hidden mt-12 space-y-10">
-            {/* Ad 1 */}
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-soft text-center">
-              <p className="text-lg font-medium text-gray-700 mb-6">
-                ພື້ນທີ່ໂຄສະໜາ
-              </p>
-              <div className="relative aspect-[3/4] overflow-hidden rounded-xl" />
-            </div>
-
-            {/* Ad 2 */}
-            <div className="bg-gray-100 border-2 border-dashed rounded-2xl p-10 text-center text-gray-600">
-              <p className="text-xl">ພື້ນທີ່ໂຄສະໜາ</p>
-              <p className="text-sm mt-3">300×600</p>
-            </div>
-          </div>
         </div>
       </main>
 
-      <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 py-12 text-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-sm opacity-90">
-            © 2025 ຄຳສັບພາສາລາວ • Made with ❤️ for the Lao community
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

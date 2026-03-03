@@ -60,6 +60,14 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
                 ກ່ຽວກັບພວກເຮົາ
               </Link>
             </li>
+            <li>
+              <Link
+                href={`/contact`}
+                className="text-white hover:text-gray-400"
+              >
+                ຕິດຕໍ່ພວກເຮົາ
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

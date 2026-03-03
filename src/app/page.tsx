@@ -5,6 +5,7 @@ import CharacterGrid from "@/components/CharGrid";
 import PopularWordsSection from "@/components/PopularWordSection";
 import MistakeCorrectionSection from "@/components/MistakeCorrectSection";
 import Header from "@/components/header";
+import Footer from "@/components/Footer";
 import { LAO_ALPHABET } from "@/shared/constant/global-contant";
 import { getRecentWords, getRecentCorrectIncorrect } from "./lib/actions";
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
@@ -57,27 +58,54 @@ export default async function Home() {
             />
           </div>
 
-          {/* Ad Sidebar */}
+          {/* Sidebar – Learning Tips */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24 bg-gray-50 rounded-2xl p-6 shadow-lg">
-              <h4 className="text-lg font-medium text-gray-700 mb-4 text-center">
-                ໂຄສະໜາ
-              </h4>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
+            <div className="sticky top-24 space-y-6">
+              {/* How to use */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                <h4 className="text-lg font-semibold text-[#205781] mb-4">
+                  📖 ວິທີໃຊ້ເວັບໄຊ
+                </h4>
+                <ul className="space-y-3 text-sm text-gray-600">
+                  <li className="flex gap-2">
+                    <span className="text-[#4F959D] font-bold">1.</span>
+                    ພິມຄຳສັບລາວ ຫຼື ອັງກິດ ໃນຊ່ອງຄົ້ນຫາ
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-[#4F959D] font-bold">2.</span>
+                    ເລືອກຄຳສັບເພື່ອເບິ່ງຄວາມໝາຍ ແລະ ຕົວຢ່າງ
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-[#4F959D] font-bold">3.</span>
+                    ກວດເບິ່ງ ຄຳຖືກ ແລະ ຜິດ ເພື່ອຮຽນການສະກົດ
+                  </li>
+                </ul>
+              </div>
 
+              {/* Quick links */}
+              <div className="bg-gradient-to-br from-[#205781] to-[#4F959D] rounded-2xl p-6 text-white shadow-sm">
+                <h4 className="text-lg font-semibold mb-3">
+                  🔗 ລິ້ງດ່ວນ
+                </h4>
+                <ul className="space-y-2 text-sm text-white/90">
+                  <li>
+                    <a href="/correct-incorrect" className="hover:text-white transition-colors underline">
+                      ➜ ຄຳຖືກ ແລະ ຜິດ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/aboutus" className="hover:text-white transition-colors underline">
+                      ➜ ກ່ຽວກັບພວກເຮົາ
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </main>
 
-      <footer className="relative bg-gradient-to-r from-[#205781] to-gray-300 py-12 text-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-sm opacity-90">
-            © 2025 ຄຳສັບພາສາລາວ • Made with ❤️ for the Lao community
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

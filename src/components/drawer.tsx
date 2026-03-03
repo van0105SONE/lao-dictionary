@@ -1,6 +1,6 @@
 // components/Drawer.jsx
 import Image from "next/image";
-import laos from "../../public/laos.png"; // Adjust the path to your image
+import laos from "../../public/logo.png"; // Adjust the path to your image
 import Link from "next/link";
 
 export interface DrawerProps {
@@ -13,7 +13,7 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
   return (
     <div
       id="drawer"
-      className={`fixed inset-y-0 left-0 w-full bg-[#205781] text-white transform transition-transform duration-300 ease-in-out z-50 ${
+      className={`fixed inset-y-0 left-0 w-[60%] max-w-xs bg-[#205781] text-white transform transition-transform duration-300 ease-in-out z-50 ${
         isDrawerOpen ? "translate-x-0" : "-translate-x-full"
       } lg:transform-none lg:relative lg:w-auto lg:bg-transparent lg:translate-x-0`}
     >
@@ -35,7 +35,7 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
         </button>
         <div className="mx-6 lg:hidden">
           <a href="#" className="text-lg font-bold">
-            <Image src={laos} alt="Laos Logo" />
+            <Image src={laos} className="w-16 h-16" alt="Laos Logo" />
           </a>
         </div>
       </div>
@@ -57,6 +57,11 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
         <li>
           <Link href={`/aboutus`} className="block p-4 hover:text-gray-400">
             ກ່ຽວກັບພວກເຮົາ
+          </Link>
+        </li>
+        <li>
+          <Link href={`/contact`} className="block p-4 hover:text-gray-400">
+            ຕິດຕໍ່ພວກເຮົາ
           </Link>
         </li>
       </ul>
