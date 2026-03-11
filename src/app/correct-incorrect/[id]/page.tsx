@@ -103,7 +103,7 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
           </Link>
 
           {pair ? (
-            <article className="bg-white rounded-3xl shadow-soft border border-gray-100 p-8 sm:p-10 space-y-8">
+            <article className="bg-white rounded-3xl shadow-soft border border-gray-100 p-5 sm:p-10 space-y-6 overflow-hidden">
               {/* Header badge */}
               <div className="flex items-center gap-2">
                 <span className="text-xs font-semibold uppercase tracking-widest text-[#205781] bg-[#205781]/8 px-3 py-1 rounded-full">
@@ -112,31 +112,31 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
               </div>
 
               {/* Incorrect → Correct */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 overflow-hidden">
                 {/* Incorrect */}
-                <div className="flex-1 bg-red-50 border border-red-100 rounded-2xl p-6 text-center">
+                <div className="w-full min-w-0 overflow-hidden bg-red-50 border border-red-100 rounded-2xl p-4 sm:p-6 text-center">
                   <p className="text-xs font-semibold text-red-400 uppercase tracking-widest mb-2">ຜິດ</p>
-                  <p className="text-4xl font-bold text-red-600 line-through leading-tight break-all">
+                  <p className="text-3xl sm:text-4xl font-bold text-red-600 line-through leading-tight break-all w-full">
                     {pair.incorrect_word}
                   </p>
                 </div>
 
                 {/* Arrow */}
-                <div className="flex justify-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-gray-500 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex justify-center shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-gray-500 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                     </svg>
-                    <svg className="w-5 h-5 text-gray-500 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-gray-500 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
 
                 {/* Correct */}
-                <div className="flex-1 bg-green-50 border border-green-200 rounded-2xl p-6 text-center">
+                <div className="w-full min-w-0 overflow-hidden bg-green-50 border border-green-200 rounded-2xl p-4 sm:p-6 text-center">
                   <p className="text-xs font-semibold text-green-500 uppercase tracking-widest mb-2">ຖືກ</p>
-                  <p className="text-4xl font-bold text-[#205781] leading-tight break-all">
+                  <p className="text-3xl sm:text-4xl font-bold text-[#205781] leading-tight break-all w-full">
                     {pair.correct_word}
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
                     </svg>
                     ຄຳອະທິບາຍ
                   </p>
-                  <p className="text-gray-700 leading-relaxed">{pair.explanation}</p>
+                  <p className="text-gray-700 leading-relaxed break-words">{pair.explanation}</p>
                 </div>
               )}
 

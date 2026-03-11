@@ -133,10 +133,10 @@ export default function CorrectIncorrectClient() {
       <div className="pointer-events-none absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <main className="relative flex-1 py-8 px-4 sm:py-12 sm:px-6">
-        <div className="pt-12 max-w-7xl mx-auto">
+        <div className="pt-12 w-full max-w-7xl mx-auto overflow-hidden">
           {/* Title + Search */}
           <div className="text-center space-y-6 sm:space-y-8 mb-12 sm:mb-16">
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-light text-gray-900 leading-tight">
               ຄຳສັບ <span className="text-green-600">ຖືກ</span> ແລະ{" "}
               <span className="text-red-600">ຜິດ</span>
               {/* Hidden keyword variant for SEO – no-space form "ຄຳຖືກແລະຜິດ" */}
@@ -160,10 +160,10 @@ export default function CorrectIncorrectClient() {
           </div>
 
           {/* Content Grid */}
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 overflow-hidden">
             {/* List of pairs */}
-            <div className="lg:col-span-2">
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-soft">
+            <div className="lg:col-span-2 min-w-0 w-full overflow-hidden">
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-4 sm:p-8 border border-gray-200 shadow-soft overflow-hidden">
                 {loading ? (
                   <div className="text-center py-20">
                     <p className="text-2xl text-gray-500">ກຳລັງໂຫຼດຂໍ້ມູນ...</p>
@@ -176,6 +176,7 @@ export default function CorrectIncorrectClient() {
                   <div className="space-y-10 sm:space-y-12">
                     {pairs.map((pair, index) => (
                       <div
+                        className="min-w-0 w-full overflow-hidden"
                         key={
                           pair.id || `${pair.incorrect_word}-${pair.correct_word}`
                         }
@@ -191,8 +192,8 @@ export default function CorrectIncorrectClient() {
               </div>
             </div>
 
-            {/* Sidebar – Tips & Related Links */}
-            <aside className="lg:col-span-1">
+            {/* Sidebar – Tips & Related Links: hidden on mobile to avoid overflow */}
+            <aside className="hidden lg:block lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 {/* Spelling tips */}
                 <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
