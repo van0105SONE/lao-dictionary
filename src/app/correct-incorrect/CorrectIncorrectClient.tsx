@@ -4,7 +4,7 @@ import Header from "@/components/header";
 import Footer from "@/components/Footer";
 import { getCorrectIncorrectPairs } from "../lib/actions";
 import { CorrectIncorrect } from "@/shared/model/CorrectIncorrect";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface PairCardProps {
@@ -13,26 +13,26 @@ interface PairCardProps {
 
 function PairCard({ pair }: PairCardProps) {
   return (
-    <div className="group p-6 bg-white rounded-2xl shadow-soft border border-transparent hover:border-[#205781]/40 hover:shadow-xl transition-all duration-300 flex flex-col gap-4">
-      <div className="space-y-4">
+    <div className="group overflow-hidden w-full p-6 bg-white rounded-2xl shadow-soft border border-transparent hover:border-[#205781]/40 hover:shadow-xl transition-all duration-300 flex flex-col gap-4">
+      <div className="space-y-4 min-w-0 w-full">
         {/* Incorrect → Correct */}
-        <div className="flex flex-col items-start sm:flex-row sm:items-center gap-4 sm:gap-6">
-          <span className="text-2xl xs:text-3xl sm:text-4xl font-medium text-red-600 line-through leading-tight">
+        <div className="flex flex-col items-start sm:flex-row sm:items-center gap-3 sm:gap-6 min-w-0 w-full">
+          <span className="w-full max-w-full break-all text-xl sm:text-4xl font-medium text-red-600 line-through leading-tight">
             {pair.incorrect_word}
           </span>
 
           {/* Arrow: horizontal on larger screens, vertical on mobile */}
-          <span className="text-2xl text-gray-500 hidden sm:inline">→</span>
-          <span className="text-2xl text-gray-500 sm:hidden">↓</span>
+          <span className="shrink-0 text-xl text-gray-500 hidden sm:inline">→</span>
+          <span className="shrink-0 text-xl text-gray-500 sm:hidden">↓</span>
 
-          <span className="text-2xl xs:text-3xl sm:text-4xl font-medium text-[#205781] leading-tight">
+          <span className="w-full max-w-full break-all text-xl sm:text-4xl font-medium text-[#205781] leading-tight">
             {pair.correct_word}
           </span>
         </div>
 
         {/* Explanation */}
         {pair.explanation && (
-          <p className="text-sm sm:text-base text-gray-700 italic pl-1 leading-relaxed">
+          <p className="break-words text-sm sm:text-base text-gray-700 italic pl-1 leading-relaxed">
             {pair.explanation}
           </p>
         )}
@@ -103,32 +103,34 @@ export default function CorrectIncorrectClient() {
 
   const debouncedKeyword = useDebounce(keyword, 300);
 
-  const loadPairs = useCallback(async (searchTerm?: string) => {
-    setLoading(true);
-    try {
-      const data = await getCorrectIncorrectPairs(searchTerm);
-      setPairs(data || FALLBACK_PAIRS);
-    } catch (error) {
-      console.error("Failed to load pairs:", error);
-      setPairs(FALLBACK_PAIRS);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
   useEffect(() => {
-    loadPairs();
-  }, [loadPairs]);
+    let cancelled = false;
 
-  useEffect(() => {
-    loadPairs(debouncedKeyword || undefined);
-  }, [debouncedKeyword, loadPairs]);
+    const load = async () => {
+      setLoading(true);
+      try {
+        const data = await getCorrectIncorrectPairs(debouncedKeyword || undefined);
+        if (!cancelled) setPairs(data || FALLBACK_PAIRS);
+      } catch (error) {
+        console.error("Failed to load pairs:", error);
+        if (!cancelled) setPairs(FALLBACK_PAIRS);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+
+    load();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [debouncedKeyword]);
 
   return (
-    <div className="relative min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col overflow-x-hidden">
       <Header />
       {/* Subtle grid background */}
-      <div className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      <div className="pointer-events-none absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <main className="relative flex-1 py-8 px-4 sm:py-12 sm:px-6">
         <div className="pt-12 max-w-7xl mx-auto">

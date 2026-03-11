@@ -5,6 +5,8 @@ import Script from "next/script";
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
 import { getCorrectIncorrectById } from "@/app/lib/searchActions";
+import ShareCardButton from "./ShareCardButton";
+
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -37,9 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "ຄຳຖືກແລະຜິດ",
       "ຄຳສັບພາສາລາວ",
     ],
-    alternates: {
-      canonical: `/correct-incorrect/${id}`,
-    },
+    alternates: { canonical: `/correct-incorrect/${id}` },
     openGraph: {
       title,
       description,
@@ -71,11 +71,11 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
     : null;
 
   return (
-    <div className="relative min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col overflow-x-hidden">
       <Header />
 
       {/* Grid background */}
-      <div className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      <div className="pointer-events-none absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       {jsonLd && (
         <Script
@@ -95,9 +95,7 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
           >
             <svg
               className="w-4 h-4 transition-transform group-hover:-translate-x-0.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
@@ -117,10 +115,8 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
               <div className="flex flex-col sm:flex-row sm:items-center gap-6">
                 {/* Incorrect */}
                 <div className="flex-1 bg-red-50 border border-red-100 rounded-2xl p-6 text-center">
-                  <p className="text-xs font-semibold text-red-400 uppercase tracking-widest mb-2">
-                    ຜິດ
-                  </p>
-                  <p className="text-4xl font-bold text-red-600 line-through leading-tight">
+                  <p className="text-xs font-semibold text-red-400 uppercase tracking-widest mb-2">ຜິດ</p>
+                  <p className="text-4xl font-bold text-red-600 line-through leading-tight break-all">
                     {pair.incorrect_word}
                   </p>
                 </div>
@@ -139,10 +135,8 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
 
                 {/* Correct */}
                 <div className="flex-1 bg-green-50 border border-green-200 rounded-2xl p-6 text-center">
-                  <p className="text-xs font-semibold text-green-500 uppercase tracking-widest mb-2">
-                    ຖືກ
-                  </p>
-                  <p className="text-4xl font-bold text-[#205781] leading-tight">
+                  <p className="text-xs font-semibold text-green-500 uppercase tracking-widest mb-2">ຖືກ</p>
+                  <p className="text-4xl font-bold text-[#205781] leading-tight break-all">
                     {pair.correct_word}
                   </p>
                 </div>
@@ -160,14 +154,18 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
                   <p className="text-gray-700 leading-relaxed">{pair.explanation}</p>
                 </div>
               )}
+
+              {/* ── Share Card Button ── */}
+              <ShareCardButton
+                incorrectWord={pair.incorrect_word}
+                correctWord={pair.correct_word}
+                explanation={pair.explanation ?? null}
+              />
             </article>
           ) : (
             <div className="bg-white rounded-3xl shadow-soft p-10 text-center">
               <p className="text-2xl text-gray-500">ບໍ່ພົບຂໍ້ມູນທີ່ຕ້ອງການ</p>
-              <Link
-                href="/correct-incorrect"
-                className="mt-6 inline-block text-[#205781] underline"
-              >
+              <Link href="/correct-incorrect" className="mt-6 inline-block text-[#205781] underline">
                 ກັບໄປລາຍການ
               </Link>
             </div>
