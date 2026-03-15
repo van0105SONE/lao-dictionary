@@ -1,27 +1,21 @@
 // app/correct-incorrect/[id]/page.tsx
 import type { Metadata } from "next";
-import Link from "next/link";
 import Script from "next/script";
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
 import { getCorrectIncorrectById } from "@/app/lib/searchActions";
-import ShareCardButton from "./ShareCardButton";
-
+import DetailContent from "./DetailContent";
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-// ── Per-pair metadata ────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const pair = await getCorrectIncorrectById(Number(id));
 
   if (!pair) {
-    return {
-      title: "ຄຳຖືກ ແລະ ຜິດ | ຄຳສັບພາສາລາວ",
-      description: "ຄຳຖືກ ແລະ ຜິດ ໃນພາສາລາວ",
-    };
+    return { title: "ຄຳຖືກ ແລະ ຜິດ | ຄຳສັບພາສາລາວ", description: "ຄຳຖືກ ແລະ ຜິດ ໃນພາສາລາວ" };
   }
 
   const title = `${pair.incorrect_word} → ${pair.correct_word} | ຄຳຖືກ ແລະ ຜິດ`;
@@ -32,17 +26,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    keywords: [
-      pair.incorrect_word,
-      pair.correct_word,
-      "ຄຳຖືກ ແລະ ຜິດ",
-      "ຄຳຖືກແລະຜິດ",
-      "ຄຳສັບພາສາລາວ",
-    ],
+    keywords: [pair.incorrect_word, pair.correct_word, "ຄຳຖືກ ແລະ ຜິດ", "ຄຳສັບພາສາລາວ"],
     alternates: { canonical: `/correct-incorrect/${id}` },
     openGraph: {
-      title,
-      description,
+      title, description,
       url: `https://www.laoswords.com/correct-incorrect/${id}`,
       siteName: "ຄຳສັບພາສາລາວ",
       locale: "lo_LA",
@@ -51,7 +38,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// ── Page ─────────────────────────────────────────────────────────────────────
 export default async function CorrectIncorrectDetailPage({ params }: PageProps) {
   const { id } = await params;
   const pair = await getCorrectIncorrectById(Number(id));
@@ -74,7 +60,6 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
     <div className="relative min-h-screen flex flex-col overflow-x-hidden">
       <Header />
 
-      {/* Grid background */}
       <div className="pointer-events-none absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       {jsonLd && (
@@ -87,90 +72,7 @@ export default async function CorrectIncorrectDetailPage({ params }: PageProps) 
       )}
 
       <main className="relative flex-1 py-8 px-4 sm:py-12 sm:px-6">
-        <div className="pt-16 max-w-2xl mx-auto">
-          {/* Back button */}
-          <Link
-            href="/correct-incorrect"
-            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#205781] mb-8 transition-colors group"
-          >
-            <svg
-              className="w-4 h-4 transition-transform group-hover:-translate-x-0.5"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            ກັບໄປລາຍການ
-          </Link>
-
-          {pair ? (
-            <article className="bg-white rounded-3xl shadow-soft border border-gray-100 p-5 sm:p-10 space-y-6 overflow-hidden">
-              {/* Header badge */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold uppercase tracking-widest text-[#205781] bg-[#205781]/8 px-3 py-1 rounded-full">
-                  ຄຳຖືກ ແລະ ຜິດ
-                </span>
-              </div>
-
-              {/* Incorrect → Correct */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 overflow-hidden">
-                {/* Incorrect */}
-                <div className="w-full min-w-0 overflow-hidden bg-red-50 border border-red-100 rounded-2xl p-4 sm:p-6 text-center">
-                  <p className="text-xs font-semibold text-red-400 uppercase tracking-widest mb-2">ຜິດ</p>
-                  <p className="text-3xl sm:text-4xl font-bold text-red-600 line-through leading-tight break-all w-full">
-                    {pair.incorrect_word}
-                  </p>
-                </div>
-
-                {/* Arrow */}
-                <div className="flex justify-center shrink-0">
-                  <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">
-                    <svg className="w-4 h-4 text-gray-500 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                    <svg className="w-4 h-4 text-gray-500 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Correct */}
-                <div className="w-full min-w-0 overflow-hidden bg-green-50 border border-green-200 rounded-2xl p-4 sm:p-6 text-center">
-                  <p className="text-xs font-semibold text-green-500 uppercase tracking-widest mb-2">ຖືກ</p>
-                  <p className="text-3xl sm:text-4xl font-bold text-[#205781] leading-tight break-all w-full">
-                    {pair.correct_word}
-                  </p>
-                </div>
-              </div>
-
-              {/* Explanation */}
-              {pair.explanation && (
-                <div className="bg-amber-50 border-l-4 border-amber-400 rounded-xl p-6">
-                  <p className="text-sm font-semibold text-amber-700 mb-2 flex items-center gap-1.5">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    ຄຳອະທິບາຍ
-                  </p>
-                  <p className="text-gray-700 leading-relaxed break-words">{pair.explanation}</p>
-                </div>
-              )}
-
-              {/* ── Share Card Button ── */}
-              <ShareCardButton
-                incorrectWord={pair.incorrect_word}
-                correctWord={pair.correct_word}
-                explanation={pair.explanation ?? null}
-              />
-            </article>
-          ) : (
-            <div className="bg-white rounded-3xl shadow-soft p-10 text-center">
-              <p className="text-2xl text-gray-500">ບໍ່ພົບຂໍ້ມູນທີ່ຕ້ອງການ</p>
-              <Link href="/correct-incorrect" className="mt-6 inline-block text-[#205781] underline">
-                ກັບໄປລາຍການ
-              </Link>
-            </div>
-          )}
-        </div>
+        <DetailContent pair={pair} />
       </main>
 
       <Footer />

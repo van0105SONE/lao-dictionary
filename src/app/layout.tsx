@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Script from "next/script";
 import { Noto_Serif_Lao } from "next/font/google";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const myFont = localFont({
   src: "../../public/NotoSansLao_Condensed-Black.ttf",
@@ -175,7 +176,9 @@ export default function RootLayout({
           })}
         </Script>
       </head>
-      <body className={notoSerifLao.className}>{children}</body>
+      <body className={notoSerifLao.className}>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

@@ -1,31 +1,26 @@
 // app/page.tsx
 import SearchCard from "@/components/SearchComponent";
-import Image from "next/image";
 import CharacterGrid from "@/components/CharGrid";
 import PopularWordsSection from "@/components/PopularWordSection";
 import MistakeCorrectionSection from "@/components/MistakeCorrectSection";
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
+import HomeSidebar from "@/components/HomeSidebar";
 import { LAO_ALPHABET } from "@/shared/constant/global-contant";
 import { getRecentWords, getRecentCorrectIncorrect } from "./lib/actions";
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
 import { CorrectIncorrect } from "@/shared/model/CorrectIncorrect";
 
-// Hardcoded fallbacks (in case API is slow/down)
 const FALLBACK_WORDS = [
-  { lao: "ສະບາຍດີ", english: "Hello", pronunciation: "sa-bai-dee" },
-  { lao: "ຂອບໃຈ", english: "Thank you", pronunciation: "khop jai" },
-  { lao: "ນໍ້າ", english: "Water", pronunciation: "nam" },
-  // ... more
+  { lao: "ສະບາຍດີ", english: "Hello",    pronunciation: "sa-bai-dee" },
+  { lao: "ຂອບໃຈ",   english: "Thank you", pronunciation: "khop jai" },
+  { lao: "ນໍ້າ",    english: "Water",     pronunciation: "nam" },
 ];
-
 const FALLBACK_PAIRS = [
   { incorrect: "ສະບາຍດີ້", correct: "ສະບາຍດີ", note: "No tone mark" },
-  // ...
 ];
 
 export default async function Home() {
-  // Fetch data directly on the server (parallel!)
   const [wordsData, pairsData] = await Promise.all([
     getRecentWords().catch(() => FALLBACK_WORDS),
     getRecentCorrectIncorrect().catch(() => FALLBACK_PAIRS),
@@ -34,22 +29,16 @@ export default async function Home() {
   return (
     <div className="relative min-h-screen flex flex-col">
       <Header />
-
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      <div className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <main className="relative flex-1">
-        <div className="pt-12 pb-20 ">
+        <div className="pt-12 pb-20">
           <SearchCard />
         </div>
-
         <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-3 gap-8 pb-20">
-          {/* Content Sections */}
           <div className="lg:col-span-2 space-y-12">
             <PopularWordsSection words={wordsData as DicionaryModel[]} />
-
             <MistakeCorrectionSection pairs={pairsData as CorrectIncorrect[]} />
-
             <CharacterGrid
               chars={LAO_ALPHABET}
               title="ຕົວອັກສອນພາສາລາວ"
@@ -57,50 +46,8 @@ export default async function Home() {
               text_color="bg-gradient-to-r from-[#4F959D] to-[#205781]"
             />
           </div>
-
-          {/* Sidebar – Learning Tips */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24 space-y-6">
-              {/* How to use */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <h4 className="text-lg font-semibold text-[#205781] mb-4">
-                  📖 ວິທີໃຊ້ເວັບໄຊ
-                </h4>
-                <ul className="space-y-3 text-sm text-gray-600">
-                  <li className="flex gap-2">
-                    <span className="text-[#4F959D] font-bold">1.</span>
-                    ພິມຄຳສັບລາວ ຫຼື ອັງກິດ ໃນຊ່ອງຄົ້ນຫາ
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-[#4F959D] font-bold">2.</span>
-                    ເລືອກຄຳສັບເພື່ອເບິ່ງຄວາມໝາຍ ແລະ ຕົວຢ່າງ
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-[#4F959D] font-bold">3.</span>
-                    ກວດເບິ່ງ ຄຳຖືກ ແລະ ຜິດ ເພື່ອຮຽນການສະກົດ
-                  </li>
-                </ul>
-              </div>
-
-              {/* Quick links */}
-              <div className="bg-gradient-to-br from-[#205781] to-[#4F959D] rounded-2xl p-6 text-white shadow-sm">
-                <h4 className="text-lg font-semibold mb-3">
-                  🔗 ລິ້ງດ່ວນ
-                </h4>
-                <ul className="space-y-2 text-sm text-white/90">
-                  <li>
-                    <a href="/correct-incorrect" className="hover:text-white transition-colors underline">
-                      ➜ ຄຳຖືກ ແລະ ຜິດ
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/aboutus" className="hover:text-white transition-colors underline">
-                      ➜ ກ່ຽວກັບພວກເຮົາ
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <HomeSidebar />
           </div>
         </div>
       </main>
