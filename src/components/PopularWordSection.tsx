@@ -1,19 +1,23 @@
+"use client";
+
 import { DicionaryModel } from "@/shared/model/DictionaryModel";
 import PopularWordCard from "./PopularWordCard";
+import { useLanguage } from "@/context/LanguageContext";
+import { t } from "@/translations";
 
-
-interface PopularWordProps{
-  words: DicionaryModel[]
+interface PopularWordProps {
+  words: DicionaryModel[];
 }
-const PopularWordsSection = ({words}: PopularWordProps ) => {
 
+const PopularWordsSection = ({ words }: PopularWordProps) => {
+  const { lang } = useLanguage();
 
   return (
     <div className="mt-4 bg-gradient-to-r from-[#205781]  to-[#4F959D] py-12 px-6">
       <div className="container mx-auto">
         {/* Section Title */}
         <h1 className="text-4xl font-bold text-white text-center mb-8">
-          ຄຳສັບລ່າສຸດ
+          {t("popular_section_title", lang)}
         </h1>
 
         {/* Popular Words Grid */}

@@ -136,12 +136,12 @@ export default function RootLayout({
         <link
           rel="alternate"
           hrefLang="en"
-          href="https://www.laoswords.com/en"
+          href="https://www.laoswords.com/"
         />
         <link
           rel="alternate"
           hrefLang="lo"
-          href="https://www.laoswords.com/lo"
+          href="https://www.laoswords.com/"
         />
         <link
           rel="alternate"

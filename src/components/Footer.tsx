@@ -21,11 +21,11 @@ export default function Footer() {
             <h3 className="text-lg font-semibold tracking-wide">{t("footer_links_title", lang)}</h3>
             <nav aria-label="Footer navigation">
               <ul className="space-y-2 text-sm text-white/80">
-                <li><Link href="/"                 className="hover:text-white transition-colors duration-200">{t("footer_home",    lang)}</Link></li>
-                <li><Link href="/correct-incorrect" className="hover:text-white transition-colors duration-200">{t("footer_correct", lang)}</Link></li>
-                <li><Link href="/aboutus"           className="hover:text-white transition-colors duration-200">{t("footer_about",   lang)}</Link></li>
-                <li><Link href="/privacy-policy"    className="hover:text-white transition-colors duration-200">{t("footer_privacy", lang)}</Link></li>
-                <li><Link href="/contact"           className="hover:text-white transition-colors duration-200">{t("footer_contact", lang)}</Link></li>
+                <li><Link href={`/${lang}`}                 className="hover:text-white transition-colors duration-200">{t("footer_home",    lang)}</Link></li>
+                <li><Link href={`/${lang}/correct-incorrect`} className="hover:text-white transition-colors duration-200">{t("footer_correct", lang)}</Link></li>
+                <li><Link href={`/${lang}/aboutus`}           className="hover:text-white transition-colors duration-200">{t("footer_about",   lang)}</Link></li>
+                <li><Link href={`/${lang}/privacy-policy`}    className="hover:text-white transition-colors duration-200">{t("footer_privacy", lang)}</Link></li>
+                <li><Link href={`/${lang}/contact`}           className="hover:text-white transition-colors duration-200">{t("footer_contact", lang)}</Link></li>
               </ul>
             </nav>
           </div>

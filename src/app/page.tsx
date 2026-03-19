@@ -41,7 +41,6 @@ export default async function Home() {
             <MistakeCorrectionSection pairs={pairsData as CorrectIncorrect[]} />
             <CharacterGrid
               chars={LAO_ALPHABET}
-              title="ຕົວອັກສອນພາສາລາວ"
               background_color="bg-white"
               text_color="bg-gradient-to-r from-[#4F959D] to-[#205781]"
             />

@@ -41,7 +41,7 @@ const MistakeCorrectionCard = ({
 
       {/* Detail button */}
       <Link
-        href={`/correct-incorrect/${id}`}
+        href={`/${lang}/correct-incorrect/${id}`}
         className="mt-1 flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-[#205781]/8 text-[#205781] font-semibold text-sm hover:bg-[#205781] hover:text-white transition-all duration-200 border border-[#205781]/20 hover:border-[#205781]"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

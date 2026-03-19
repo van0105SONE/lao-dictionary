@@ -24,12 +24,12 @@ export default function HomeSidebar() {
         <h4 className="text-lg font-semibold mb-3">{t("home_links_title", lang)}</h4>
         <ul className="space-y-2 text-sm text-white/90">
           <li>
-            <a href="/correct-incorrect" className="hover:text-white transition-colors underline">
+            <a href={`/${lang}/correct-incorrect`} className="hover:text-white transition-colors underline">
               ➜ {t("home_link_correct", lang)}
             </a>
           </li>
           <li>
-            <a href="/aboutus" className="hover:text-white transition-colors underline">
+            <a href={`/${lang}/aboutus`} className="hover:text-white transition-colors underline">
               ➜ {t("home_link_about", lang)}
             </a>
           </li>

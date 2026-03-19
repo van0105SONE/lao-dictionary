@@ -70,8 +70,15 @@ const translations = {
   ci_share_ios_hint:   { lo: "📱 iPhone/iPad: ກົດ \"ດາວໂຫຼດ\" → ຈິກຮູບຄ້າງ → \"ບັນທຶກຮູບ\"", en: "📱 iPhone/iPad: tap Download → long-press image → Save to Photos" },
   ci_share_done:       { lo: "ດາວໂຫຼດແລ້ວ ນຳໄປໂພສໄດ້ເລີ້ຍ 🎉", en: "Downloaded! Ready to post 🎉" },
 
+  // ── PopularWordsSection ──────────────────────────────────────────────────
+  popular_section_title: { lo: "ຄຳສັບລ່າສຸດ",              en: "Recent Words" },
+  popular_view_detail:   { lo: "ເບິ່ງລາຍລະອຽດ",            en: "View Detail" },
+
   // ── MistakeCorrectSection ─────────────────────────────────────────────────
   mistake_section_title: { lo: "ຕົວຢ່າງຄຳຜິດ ແລະ ຄຳຖືກ", en: "Common Spelling Mistakes" },
+
+  // ── CharacterGrid ─────────────────────────────────────────────────────────
+  char_grid_title:       { lo: "ຕົວອັກສອນລາວ",             en: "Lao Alphabet" },
 
   // ── About page ────────────────────────────────────────────────────────────
   about_title:         { lo: "ກ່ຽວກັບພວກເຮົາ",          en: "About Us" },
@@ -90,6 +97,8 @@ const translations = {
   contact_card_web_desc:    { lo: "ເຂົ້າເບິ່ງເວັບໄຊຂອງພວກເຮົາ", en: "Visit our website" },
   contact_card_loc_title:   { lo: "ສະຖານທີ່",           en: "Location" },
   contact_card_loc_desc:    { lo: "ທີມພັດທະນາ",         en: "Development team" },
+    contact_card_facebook_title:   { lo: "ເຟສບຸກ",           en: "Facebook" },
+  contact_card_facebook_desc:    { lo: "ເຂົ້າເບິ່ງເຟສບຸກຂອງພວກເຮົາ", en: "Visit our Facebook" },
   contact_item_error_title: { lo: "ແຈ້ງຄຳຜິດ",          en: "Report Errors" },
   contact_item_error_desc:  { lo: "ຫາກພົບຄຳທີ່ສະກົດຜິດ ຫຼື ແປຜິດ", en: "If you find misspelled or mistranslated words" },
   contact_item_add_title:   { lo: "ເພີ່ມຄຳສັບ",          en: "Add Words" },

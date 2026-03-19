@@ -31,17 +31,22 @@ export default function ContactClient() {
       detail: "www.laoswords.com",
       href: "https://www.laoswords.com",
     },
+
     {
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
+    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          strokeWidth="1.5" 
+          d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" 
+        />
+      </svg>
       ),
-      title: t("contact_card_loc_title", lang),
-      description: t("contact_card_loc_desc", lang),
-      detail: "ສປປ ລາວ 🇱🇦",
-      href: null,
+      title: t("contact_card_facebook_title", lang),
+      description: t("contact_card_facebook_desc", lang),
+      detail: "ຮຽນພາສາລາວນຳກັນ",
+      href: "https://www.facebook.com/groups/1033904770470433",
     },
   ];
 
