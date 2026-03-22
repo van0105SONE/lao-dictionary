@@ -164,12 +164,12 @@ const WordDetailCard = ({
                     <div className="flex-shrink-0 w-6 h-6 mt-1 flex items-center justify-center bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
                       {index + 1}
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <p className="mt-2 text-gray-500 text-sm italic pl-4 border-l-2 border-gray-200">
                         ປະເພດຄຳ: {item.kind}
                       </p>
 
-                      <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
+                      <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line break-all">
                         {item.text}
                       </p>
                     </div>
