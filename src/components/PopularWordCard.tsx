@@ -33,7 +33,7 @@ const PopularWordCard = ({ word, examples, definitions }: DicionaryModel) => {
 
       {/* Navigate to detail button */}
       <Link
-        href={`/${lang}/${encodeURIComponent(word)}`}
+        href={`/${encodeURIComponent(word)}`}
         className="mt-1 flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-[#205781]/8 text-[#205781] font-semibold text-sm hover:bg-[#205781] hover:text-white transition-all duration-200 border border-[#205781]/20 hover:border-[#205781]"
       >
         <svg
