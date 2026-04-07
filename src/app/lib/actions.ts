@@ -159,7 +159,7 @@ export const getCorrectIncorrectPairs = async (keyword?: string) => {
     query = query.where(
       or(
         like(correct_and_incorrect.incorrect_word, `%${term}%`),
-        like(correct_and_incorrect.incorrect_word, `%${term}%`)
+        like(correct_and_incorrect.correct_word, `%${term}%`)
       )
     );
   }
