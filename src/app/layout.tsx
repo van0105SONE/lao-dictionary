@@ -118,7 +118,9 @@ export default function RootLayout({
         <meta name="language" content="Lao, Laotian, lo, lo-LA" />
         {/* Google Advertisement */}
         <meta name="google-adsense-account" content="ca-pub-8119173006530412" />
-
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8119173006530412"
+            crossOrigin="anonymous"></script>
+            
         {/* Google Analytics */}
         <Script
           async
