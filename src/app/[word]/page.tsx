@@ -120,10 +120,58 @@ export default async function WordPage({ params }: PageProps) {
               />
             </article>
           ) : (
-            <div className="bg-white rounded-xl shadow-sm p-6 md:p-8 text-center">
-              <p className="text-2xl text-gray-500">
-                ບໍ່ພົບຄຳທີ່ຄົ້ນຫາ: &quot;{decoded}&quot;
-              </p>
+            <div className="space-y-6">
+              <div className="bg-white rounded-xl shadow-sm p-8 text-center space-y-4">
+                <div className="text-5xl">🔍</div>
+                <h1 className="text-2xl font-semibold text-gray-700">
+                  ບໍ່ພົບຄຳທີ່ຄົ້ນຫາ:{" "}
+                  <span className="text-[#205781]">&quot;{decoded}&quot;</span>
+                </h1>
+                <p className="text-gray-500">
+                  ຄຳວ່າ &quot;{decoded}&quot; ຍັງບໍ່ມີໃນຖານຂໍ້ມູນຂອງພວກເຮົາ.
+                  ທ່ານສາມາດລອງຊອກຫາຄຳອື່ນ ຫຼື ກັບໄປໜ້າຫຼັກ.
+                </p>
+                <p lang="en" className="text-gray-400 text-sm">
+                  The word &quot;{decoded}&quot; was not found in our Lao
+                  dictionary. Try searching for another word or return to the
+                  home page.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+                  <a
+                    href="/"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-[#205781] text-white rounded-lg hover:bg-[#1a4a6d] transition-colors text-sm font-medium"
+                  >
+                    ← ກັບໄປຄົ້ນຫາ
+                    <span lang="en" className="opacity-75">/ Back to Search</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Did you know box */}
+              <div className="bg-gradient-to-br from-[#205781]/5 to-[#4F959D]/10 rounded-xl border border-[#4F959D]/20 p-6 space-y-3">
+                <h2 className="font-semibold text-[#205781] text-lg">
+                  ຮູ້ໄຫມ?{" "}
+                  <span lang="en" className="font-normal text-[#4F959D] text-base">
+                    / Did you know?
+                  </span>
+                </h2>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  laoswords.com ມີຖານຂໍ້ມູນຄຳສັບພາສາລາວຈຳນວນຫຼາຍ.
+                  ລວມທັງ ຄຳຖືກ ແລະ ຜິດ, ການອອກສຽງ, ໝວດຄຳ ແລະ ຕົວຢ່າງປະໂຫຍກ.
+                </p>
+                <p lang="en" className="text-sm text-gray-500 leading-relaxed">
+                  laoswords.com contains thousands of Lao words with definitions,
+                  pronunciation guides, correct/incorrect spelling pairs, and
+                  example sentences — all free to use.
+                </p>
+                <a
+                  href="/correct-incorrect"
+                  className="inline-flex items-center gap-1 text-sm text-[#205781] underline hover:text-[#4F959D] transition-colors"
+                >
+                  ເບິ່ງຄຳຖືກ ແລະ ຜິດ{" "}
+                  <span lang="en">/ Browse correct vs. incorrect words</span>
+                </a>
+              </div>
             </div>
           )}
         </div>

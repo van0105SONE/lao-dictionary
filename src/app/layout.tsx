@@ -111,8 +111,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="lo">
+    <html lang="lo" dir="ltr">
       <head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="Content-Language" content="lo, en" />
+        <meta name="language" content="Lao, Laotian, lo, lo-LA" />
         {/* Google Advertisement */}
         <meta name="google-adsense-account" content="ca-pub-8119173006530412" />
 
