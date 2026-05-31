@@ -60,7 +60,7 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
         </li>
         <li>
           <Link
-            href={`/correct-incorrect`}
+            href={`/lao-language-basics`}
             className="block p-4 hover:text-gray-400 "
           >
             {t("nav_language_basic", lang)}

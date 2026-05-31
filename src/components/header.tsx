@@ -70,7 +70,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href="/lao-language-basic"
+                  href="/lao-language-basics"
                   className="text-white hover:text-gray-300 transition-colors"
                 >
                   {t("nav_language_basic", lang)}
