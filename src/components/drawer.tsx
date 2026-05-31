@@ -2,6 +2,8 @@
 import Image from "next/image";
 import laos from "../../public/logo.png"; // Adjust the path to your image
 import Link from "next/link";
+import { t } from "@/translations";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface DrawerProps {
   isDrawerOpen: boolean;
@@ -10,6 +12,8 @@ export interface DrawerProps {
 }
 
 const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
+  const { lang, toggleLang } = useLanguage();
+
   return (
     <div
       id="drawer"
@@ -43,7 +47,7 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
       <ul className="mt-4 text-lg lg:hidden">
         <li>
           <Link href={`/`} className="block p-4 hover:text-gray-400 ">
-            ວັດຈະນານຸກົມ
+            {t("nav_home", lang)}
           </Link>
         </li>
         <li>
@@ -51,17 +55,25 @@ const Drawer = ({ isDrawerOpen, toggleDrawer, closeDrawer }: DrawerProps) => {
             href={`/correct-incorrect`}
             className="block p-4 hover:text-gray-400 "
           >
-            ຄຳຜິດ ແລະ ຖືກ
+            {t("nav_correct", lang)}
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={`/correct-incorrect`}
+            className="block p-4 hover:text-gray-400 "
+          >
+            {t("nav_language_basic", lang)}
           </Link>
         </li>
         <li>
           <Link href={`/aboutus`} className="block p-4 hover:text-gray-400">
-            ກ່ຽວກັບພວກເຮົາ
+            {t("nav_about", lang)}
           </Link>
         </li>
         <li>
           <Link href={`/contact`} className="block p-4 hover:text-gray-400">
-            ຕິດຕໍ່ພວກເຮົາ
+            {t("nav_contact", lang)}
           </Link>
         </li>
       </ul>

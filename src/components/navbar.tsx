@@ -54,6 +54,14 @@ export default function Navbar({ isDrawerOpen, toggleDrawer }: HeaderProps) {
             </li>
             <li>
               <Link
+                href={`/lao-language-basi`}
+                className="text-white hover:text-gray-400"
+              >
+                ພື້ນຖານພາສາລາວ
+              </Link>
+            </li>
+            <li>
+              <Link
                 href={`/aboutus`}
                 className="text-white hover:text-gray-400"
               >

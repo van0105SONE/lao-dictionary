@@ -208,7 +208,7 @@ export default function AboutPage() {
                   qLo: "ສາມາດຊ່ວຍເພີ່ມຄຳສັບໄດ້ບໍ?",
                   qEn: "Can I contribute new words?",
                   aLo:
-                    "ໄດ້ຄ່ະ! ສາມາດຕິດຕໍ່ພວກເຮົາຜ່ານໜ້າ ຕິດຕໍ່ ເພື່ອສະເໜີຄຳສັບໃໝ່ ຫຼື ແຈ້ງຄຳທີ່ຜິດ.",
+                    "ໄດ້ເດີ ທ່ານສາມາດຕິດຕໍ່ພວກເຮົາຜ່ານໜ້າ ຕິດຕໍ່ ເພື່ອສະເໜີຄຳສັບໃໝ່ ຫຼື ແຈ້ງຄຳທີ່ຜິດ.",
                   aEn:
                     "Yes! Contact us via the Contact page to suggest new words or report errors.",
                 },

@@ -34,17 +34,11 @@ export const metadata: Metadata = {
 
 export default function LaoBasicsPage() {
   return (
-    <div className="relative min-h-screen flex flex-col bg-white">
-      <div
-        className="fixed inset-0 -z-10"
-        style={{
-          background:
-            "linear-gradient(135deg, #f0f4ff 0%, #fdf6ee 50%, #f0fff4 100%)",
-        }}
-        aria-hidden="true"
-      />
+    <div className="relative min-h-screen flex flex-col">
+      {/* Same background as home page */}
+      <div className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-10" />
       <Header />
-      <main className="flex-1">
+      <main className="relative flex-1">
         <LaoBasicsClient />
       </main>
       <Footer />

@@ -70,12 +70,21 @@ export default function Header() {
               </li>
               <li>
                 <Link
+                  href="/lao-language-basic"
+                  className="text-white hover:text-gray-300 transition-colors"
+                >
+                  {t("nav_language_basic", lang)}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/aboutus"
                   className="text-white hover:text-gray-300 transition-colors"
                 >
                   {t("nav_about", lang)}
                 </Link>
               </li>
+
               <li>
                 <Link
                   href="/contact"
